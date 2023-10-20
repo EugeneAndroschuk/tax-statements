@@ -5,6 +5,7 @@ export const AuthPageWrap = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+  padding-top: 16px;
   background-image: linear-gradient(
       to right,
       rgba(47, 48, 58, 0.8),

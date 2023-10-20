@@ -6,8 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 // import { googleAuth } from "../../redux/auth/authThunks";
 // import { setToken } from "../../redux/auth/authSlice";
 import Loader from "../../components/Loader/Loader";
+import Container from "../../styles/Container";
 // import { getUserIsRefreshing } from "../../redux/auth/authSelectors";
 import { AuthPageWrap } from "./AuthPage.styled";
+
 
 const AuthPage = () => {
   const [searchParams] = useSearchParams();
@@ -30,7 +32,9 @@ const AuthPage = () => {
   // }, [dispatch, token]);
 
   return (
-    <AuthPageWrap>{isUserRefreshing ? <Loader /> : <Outlet />}</AuthPageWrap>
+    <AuthPageWrap>
+      <Container>{isUserRefreshing ? <Loader /> : <Outlet />}</Container>
+    </AuthPageWrap>
   );
 };
 

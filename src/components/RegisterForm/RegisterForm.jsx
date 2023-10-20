@@ -85,13 +85,6 @@ const RegisterForm = () => {
               <ErrorMsg>{errors.confirmPassword.message}</ErrorMsg>
             )}
           </ItemStyled>
-          <ItemStyled>
-            <label>Role</label>
-            <select {...register("role", { required: true })}>
-              <option value="accountant">accountant</option>
-              <option value="manager">manager</option>
-            </select>
-          </ItemStyled>
         </ListStyled>
         <SubmitBtnStyled type="submit">Register</SubmitBtnStyled>
         <GoogleBtn href="https://logistics-db.onrender.com/api/users/google">

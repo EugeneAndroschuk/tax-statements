@@ -1,19 +1,17 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
+import Container from "../../../styles/Container";
+import Header from "../../../components/Header/Header";
+import { SharedLayoutWrap } from "./SharedLayout.styled";
 
 const SharedLayout = () => {
     return (
-      <div>
-        <header>
-          <h1>Shared Layout</h1>
-          <Link to="/">Main</Link>
-          <Link to="/auth/login">Login</Link>
-          <Link to="/auth/register">Register</Link>
-        </header>
+      <SharedLayoutWrap>
+        <Header/>
         <main>
           <Outlet />
         </main>
-      </div>
+      </SharedLayoutWrap>
     );
 }
 
