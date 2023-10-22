@@ -18,6 +18,7 @@ export const RegisterWrap = styled.div`
 
 export const LinkStyledLogin = styled(Link)`
   color: white;
+  
   position: absolute;
   top: 16px;
 
@@ -27,7 +28,7 @@ export const LinkStyledLogin = styled(Link)`
 
   &.fadelogin-enter-active {
     transform: translateY(0);
-    transition: transform 300ms;
+    transition: transform 600ms;
   }
 
   &.fadelogin-exit {
@@ -36,7 +37,7 @@ export const LinkStyledLogin = styled(Link)`
 
   &.fadelogin-exit-active {
     transform: translateY(-24px);
-    transition: transform 300ms;
+    transition: transform 600ms;
   }
 
   &.fadelogin-exit-done {
@@ -46,6 +47,7 @@ export const LinkStyledLogin = styled(Link)`
 
 export const LinkStyledRegister = styled(Link)`
   color: white;
+  
   position: absolute;
   top: 16px;
 
@@ -55,7 +57,7 @@ export const LinkStyledRegister = styled(Link)`
 
   &.faderegister-enter-active {
     transform: translateY(0);
-    transition: transform 300ms;
+    transition: transform 600ms;
   }
 
   &.faderegister-exit {
@@ -64,7 +66,7 @@ export const LinkStyledRegister = styled(Link)`
 
   &.faderegister-exit-active {
     transform: translateY(-24px);
-    transition: transform 300ms;
+    transition: transform 600ms;
   }
 
   &.faderegister-exit-done {

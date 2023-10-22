@@ -25,7 +25,7 @@ const AuthMenu = () => {
             nodeRef={nodeRefLogin}
             in={isFirstRender}
             classNames="fadelogin"
-            timeout={300}
+            timeout={600}
             //   unmountOnExit
           >
             <LinkStyledLogin to="/auth/login" ref={nodeRefLogin}>
@@ -38,7 +38,7 @@ const AuthMenu = () => {
             nodeRef={nodeRefRegister}
             in={isFirstRender}
             classNames="faderegister"
-            timeout={300}
+            timeout={600}
             //   unmountOnExit
           >
             <LinkStyledRegister to="/auth/register" ref={nodeRefRegister}>

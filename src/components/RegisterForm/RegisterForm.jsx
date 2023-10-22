@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
-// import { userRegister } from "../../redux/auth/authThunks";
+import { userRegister } from "../../redux/auth/authThunks";
 import {
   FormWrap,
   FormStyled,
@@ -19,7 +19,7 @@ import {
 } from "./RegisterForm.styled";
 
 const RegisterForm = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -30,8 +30,8 @@ const RegisterForm = () => {
   password.current = watch("password", "");
     
     const onSubmitForm = (data) => {
-        const { name, email, password, role } = data;
-        // dispatch(userRegister({ name, email, password, role }));
+        const { name, email, password } = data;
+        dispatch(userRegister({ name, email, password }));
     }
 
   return (
@@ -87,7 +87,7 @@ const RegisterForm = () => {
           </ItemStyled>
         </ListStyled>
         <SubmitBtnStyled type="submit">Register</SubmitBtnStyled>
-        <GoogleBtn href="https://logistics-db.onrender.com/api/users/google">
+        <GoogleBtn href="https://db-statements.onrender.com/api/users/google">
           <GoogleIcon></GoogleIcon>
           Sign In with Google
         </GoogleBtn>
