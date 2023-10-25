@@ -86,7 +86,7 @@ const LoginForm = () => {
           Sign In with Google
         </GoogleBtn>
         <TextStyled>
-          Already have an account ?
+          Don't have an account ?
           <LinkStyled to="/auth/register">Register</LinkStyled>
         </TextStyled>
       </FormStyled>
