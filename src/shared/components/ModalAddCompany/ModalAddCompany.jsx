@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addCompany } from "../../../redux/companies/companiesThunks";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   ModalWrap,
@@ -12,7 +14,9 @@ import {
   SubmitBtnStyled,
 } from "./ModalAddCompany.styled";
 
+
 const ModalAddCompany = ({ toggleModal }) => {
+  const dispatch = useDispatch();
     const {
       register,
       handleSubmit,
@@ -23,7 +27,8 @@ const ModalAddCompany = ({ toggleModal }) => {
     const onSubmitForm = (data) => {
         // const { email, password } = data;
         console.log(data)
-    //   dispatch(userLogIn({ email, password }));
+      dispatch(addCompany(data));
+      toggleModal();
     };
 
   return (
@@ -53,7 +58,7 @@ const ModalAddCompany = ({ toggleModal }) => {
             <LabelStyled htmlFor="regcode">Registration code</LabelStyled>
             <InpuStyled
               type="text"
-              {...register("regcode", {
+              {...register("regCode", {
                 required: "You must specify a password",
                 minLength: {
                   value: 8,
@@ -67,7 +72,7 @@ const ModalAddCompany = ({ toggleModal }) => {
             <LabelStyled htmlFor="taxcode">Tax code</LabelStyled>
             <InpuStyled
               type="text"
-              {...register("taxcode", {
+              {...register("taxCode", {
                 required: true,
               })}
               placeholder={"Tax code"}
