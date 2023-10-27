@@ -5,12 +5,15 @@ import { userRefresh } from "./redux/auth/authThunks";
 import SharedLayout from "./shared/components/SharedLayout/SharedLayout";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import MainPage from "./pages/MainPage/MainPage";
+import CompanyPage from "./pages/CompanyPage/CompanyPage";
+import CompanyCard from "./components/CompanyCard/CompanyCard";
 
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 import RestrictedRoute from "./pages/routes/RestrictedRoute";
 import PrivateRoute from "./pages/routes/PrivateRoute";
+
 
 const routes = [
   {
@@ -33,6 +36,16 @@ const routes = [
           {
             path: "/auth/login",
             element: <RestrictedRoute component={LoginForm} />,
+          },
+        ],
+      },
+      {
+        path: "/company",
+        element: <PrivateRoute component={CompanyPage} />,
+        children: [
+          {
+            path: "/company/:companyId",
+            element: <PrivateRoute component={CompanyCard} />,
           },
         ],
       },

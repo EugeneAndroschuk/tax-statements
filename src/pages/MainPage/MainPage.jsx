@@ -9,7 +9,7 @@ import CompanyList from "../../components/CompanyList/CompanyList";
 
 const MainPage = () => {
   const [isModalAddCompanyOpen, setIsModalAddCompanyOpen] = useState(false);
-  const [isModalAddVatOpen, setIsModalAddVatOpen] = useState(false);
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,9 +20,7 @@ const MainPage = () => {
     setIsModalAddCompanyOpen(!isModalAddCompanyOpen);
   }
 
-  const toggleModalAddVat = () => {
-    setIsModalAddVatOpen(!isModalAddVatOpen);
-  };
+  
 
     return (
       <div>
@@ -31,9 +29,7 @@ const MainPage = () => {
           <button type="button" onClick={() => setIsModalAddCompanyOpen(true)}>
             ADD COMPANY
           </button>
-          <button type="button" onClick={() => setIsModalAddVatOpen(true)}>
-            ADD VAT DECLARATION
-          </button>
+
           <CompanyList />
 
           {isModalAddCompanyOpen && (
@@ -42,11 +38,7 @@ const MainPage = () => {
             </ModalPort>
           )}
 
-          {isModalAddVatOpen && (
-            <ModalPort toggleModal={toggleModalAddVat}>
-              <ModalAddVat toggleModal={toggleModalAddVat} />
-            </ModalPort>
-          )}
+          
         </Container>
       </div>
     );

@@ -66,7 +66,8 @@ export const companiesSlice = createSlice({
       .addMatcher(isAnyOf(getCompanyById.fulfilled), (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = [action.payload];
+        state.items.allCompanies = [action.payload];
+        state.items.total = 1;
       })
       .addMatcher(isAnyOf(addCompany.fulfilled), (state) => {
         state.isLoading = false;
