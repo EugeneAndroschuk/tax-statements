@@ -6,6 +6,7 @@ import ModalPort from "../../shared/components/ModalPort/ModalPort";
 import ModalAddCompany from "../../shared/components/ModalAddCompany/ModalAddCompany";
 import ModalAddVat from "../../shared/components/ModalAddVat/ModalAddVat";
 import CompanyList from "../../components/CompanyList/CompanyList";
+import VatDeclarationList from "../../components/VatDeclarationList/VatDeclarationList";
 
 const MainPage = () => {
   const [isModalAddCompanyOpen, setIsModalAddCompanyOpen] = useState(false);
@@ -31,6 +32,8 @@ const MainPage = () => {
           </button>
 
           <CompanyList />
+
+          <VatDeclarationList/>
 
           {isModalAddCompanyOpen && (
             <ModalPort toggleModal={toggleModalAddCompany}>

@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { addCompany } from "../../../redux/companies/companiesThunks";
+import { addVatDeclaration } from "../../../redux/vatDeclarations/vatDeclarationsThunks";
 import CloseIcon from "@mui/icons-material/Close";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -17,8 +18,9 @@ import {
   SubmitBtnStyled,
 } from "./ModalAddVat.styled";
 
+
 const MONTHS = [
-  { name: "january", value: "01-31" },
+  // { name: "january", value: "01-31" },
   { name: "fabruary", value: "02-28" },
   { name: "march", value: "03-31" },
   { name: "april", value: "04-30" },
@@ -33,12 +35,14 @@ const MONTHS = [
 ];
 
 const ModalAddVat = ({ toggleModal }) => {
-  const [month, setMonth] = useState("");
+  const [month, setMonth] = useState("01-31");
+  const dispatch = useDispatch();
+  const { companyId } = useParams();
 
   const handleChange = (event) => {
     setMonth(event.target.value);
   };
-  //   const dispatch = useDispatch();
+    
   const {
     register,
     handleSubmit,
@@ -48,12 +52,18 @@ const ModalAddVat = ({ toggleModal }) => {
   } = useForm();
 
   useEffect(() => {
-      setValue("year", 2023);
+    setValue("year", 2023);
   }, [setValue]);
 
   const onSubmitForm = (data) => {
-    console.log(data);
-    // dispatch(addCompany(data));
+    const { month, year, revenue, vatPayable } = data;
+
+    const period = month + "-" + year;
+
+    // console.log(data);
+    dispatch(
+      addVatDeclaration({ period, revenue, vatPayable, company: companyId })
+    );
     // toggleModal();
   };
 
@@ -84,14 +94,14 @@ const ModalAddVat = ({ toggleModal }) => {
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
             >
+              <MenuItem value="01-31">
+                <em>january</em>
+              </MenuItem>
               {MONTHS.map((month) => (
                 <MenuItem key={month.name} value={`${month.value}`}>
                   {month.name}
                 </MenuItem>
               ))}
-              {/* <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem> */}
             </Select>
           </ItemStyled>
           <ItemStyled>
@@ -107,8 +117,28 @@ const ModalAddVat = ({ toggleModal }) => {
               })}
             />
           </ItemStyled>
+          <ItemStyled>
+            <LabelStyled htmlFor="revenue">Revenue</LabelStyled>
+            <InpuStyled
+              type="number"
+              min="0"
+              {...register("revenue", {
+                required: true,
+              })}
+            />
+          </ItemStyled>
+          <ItemStyled>
+            <LabelStyled htmlFor="">VAT payable</LabelStyled>
+            <InpuStyled
+              type="number"
+              min="0"
+              {...register("vatPayable", {
+                required: true,
+              })}
+            />
+          </ItemStyled>
         </ListStyled>
-        <SubmitBtnStyled type="submit">Add company</SubmitBtnStyled>
+        <SubmitBtnStyled type="submit">Add Declaration</SubmitBtnStyled>
       </FormStyled>
     </ModalWrap>
   );

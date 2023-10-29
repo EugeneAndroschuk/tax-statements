@@ -13,6 +13,7 @@ import {
 } from "redux-persist";
 import { authReducer } from "./auth/authSlice";
 import { companiesReducer } from "./companies/companiesSlice";
+import { vatDeclarationsReducer } from "./vatDeclarations/vatDeclarationsSlice";
 import handleMiddleware from "../utils/handleMiddleware";
 
 const persistConfig = {
@@ -27,6 +28,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     companies: companiesReducer,
+    vatDeclarations: vatDeclarationsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
