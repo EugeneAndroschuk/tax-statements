@@ -60,11 +60,10 @@ const ModalAddVat = ({ toggleModal }) => {
 
     const period = month + "-" + year;
 
-    // console.log(data);
     dispatch(
       addVatDeclaration({ period, revenue, vatPayable, company: companyId })
     );
-    // toggleModal();
+    toggleModal();
   };
 
   return (

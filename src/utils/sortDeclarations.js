@@ -11,9 +11,11 @@ export const groupDeclarationsByPeriod = (arr) => {
       vatPayable: arr[i].vatPayable,
     });
 
-    if (period !== arr[i].period || i === arr.length - 1) {
+    if (i === arr.length - 1) result.push({ period, declarations: declarationsInCurrentDate }); else
+
+    if (period !== arr[i+1].period) {
       result.push({ period, declarations: declarationsInCurrentDate });
-      period = arr[i].period;
+      period = arr[i+1].period;
       declarationsInCurrentDate = [];
     }
   }

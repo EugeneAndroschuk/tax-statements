@@ -1,36 +1,31 @@
 import styled from "styled-components";
 
+export const PeriodItem = styled.li`
+margin-bottom: 16px;
+`;
+
+export const VatDeclarationPeriodWrap = styled.div`
+position: relative;
+`;
+
 export const VatDeclarationPeriod = styled.p`
-  background-color: rgb(223, 229, 240);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(245, 245, 245);
   cursor: pointer;
 `;
 
+export const ExpandMoreIconWrap = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 16px;
+
+  transition: ${(props) => (props.$rotate ? "transform 0.3s ease-out" : "")};
+`;
+
 export const VatDeclarationItemWrap = styled.div`
-  //   height: ${(props) => (props.accordionopen ? "auto" : "0")};
-  //   overflow: ${(props) => (props.accordionopen ? "auto" : "hidden")};
-  //   transition: ${(props) =>
-    props.accordionopen ? "height 0.6s ease-out" : ""};
-
-
-    height: 0;
-    overflow: hidden;
-
-  &.fadelogin-enter {
-    height: 0;
-  }
-
-  &.fadelogin-enter-active {
-    height: auto;
-    transition: height 600ms;
-    overflow: auto;
-  }
-
-  &.fadelogin-exit {
-    height: 0;
-  }
-
-  &.fadelogin-exit-active {
-    height: auto;
-    transition: height 600ms;
-  }
+ background-color: white;
 `;

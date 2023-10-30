@@ -14,9 +14,7 @@ const CompanyCard = () => {
     const { allCompanies } = useSelector(getAllCompaniesSelector);
 
     return (
-      <div>
-        <h1>{allCompanies[0].name}</h1>
-      </div>
+      <div>{allCompanies.length > 0 && <h1>{allCompanies[0].name}</h1>}</div>
     );
 }
 

@@ -4,9 +4,9 @@ import { getAllCompanies } from "../../redux/companies/companiesThunks";
 import Container from "../../styles/Container";
 import ModalPort from "../../shared/components/ModalPort/ModalPort";
 import ModalAddCompany from "../../shared/components/ModalAddCompany/ModalAddCompany";
-import ModalAddVat from "../../shared/components/ModalAddVat/ModalAddVat";
 import CompanyList from "../../components/CompanyList/CompanyList";
 import VatDeclarationList from "../../components/VatDeclarationList/VatDeclarationList";
+import { WrapStyled } from "./MainPage.styled";
 
 const MainPage = () => {
   const [isModalAddCompanyOpen, setIsModalAddCompanyOpen] = useState(false);
@@ -24,7 +24,7 @@ const MainPage = () => {
   
 
     return (
-      <div>
+      <WrapStyled>
         <Container>
           <h1>Tax Statements</h1>
           <button type="button" onClick={() => setIsModalAddCompanyOpen(true)}>
@@ -33,17 +33,15 @@ const MainPage = () => {
 
           <CompanyList />
 
-          <VatDeclarationList/>
+          <VatDeclarationList />
 
           {isModalAddCompanyOpen && (
             <ModalPort toggleModal={toggleModalAddCompany}>
               <ModalAddCompany toggleModal={toggleModalAddCompany} />
             </ModalPort>
           )}
-
-          
         </Container>
-      </div>
+      </WrapStyled>
     );
 }
 
