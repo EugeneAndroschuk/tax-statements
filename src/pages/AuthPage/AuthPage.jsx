@@ -8,7 +8,13 @@ import { setToken } from "../../redux/auth/authSlice";
 import Loader from "../../components/Loader/Loader";
 import Container from "../../styles/Container";
 import { getUserIsRefreshing } from "../../redux/auth/authSelectors";
-import { AuthPageWrap } from "./AuthPage.styled";
+import {
+  AuthPageWrap,
+  OutletWrap,
+  AuthTextWrap,
+  AuthPageTitle,
+  AuthPageText,
+} from "./AuthPage.styled";
 
 
 const AuthPage = () => {
@@ -32,7 +38,20 @@ const AuthPage = () => {
 
   return (
     <AuthPageWrap>
-      <Container>{isUserRefreshing ? <Loader /> : <Outlet />}</Container>
+      <Container>
+        {isUserRefreshing ? (
+          <Loader />
+        ) : (
+          <OutletWrap>
+            <AuthTextWrap>
+              <AuthPageTitle>Tax statements</AuthPageTitle>
+              <AuthPageText>VAT Declarations</AuthPageText>
+            </AuthTextWrap>
+
+            <Outlet />
+          </OutletWrap>
+        )}
+      </Container>
     </AuthPageWrap>
   );
 };

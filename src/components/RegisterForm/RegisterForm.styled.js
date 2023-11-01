@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import googleImg from "../../assets/images/google.png";
 
 export const FormWrap = styled.div`
-  // height: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,7 @@ export const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
   width: 608px;
+  height: calc(100vh - 60px);
   padding: 16px 0px;
   margin-left: auto;
   margin-right: auto;
@@ -20,8 +21,8 @@ export const FormStyled = styled.form`
 
   background-image: linear-gradient(
     to right,
-    rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.4)
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.9)
   );
 `;
 
@@ -44,8 +45,7 @@ export const InpuStyled = styled.input`
   outline: none;
   width: 458px;
   height: 36px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  background-color: rgb(221, 220, 230);
+  border: 2px solid rgb(252, 214, 20);
   border-radius: 8px;
   padding: 5px 16px;
 `;
@@ -97,7 +97,7 @@ export const GoogleBtn = styled.a`
   height: 36px
   padding: 0;
   border-radius: 8px;
-  border: 2px solid white;
+  border: 2px solid rgb(252, 214, 20);
   background-color: white;
   
   margin-left: auto;
@@ -109,8 +109,8 @@ export const GoogleBtn = styled.a`
   font-weight: 600;
 
   &:hover {
-    border: 2px solid white;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgb(252, 214, 20);
+    box-shadow: 2px 2px 2px 1px rgb(252, 214, 20);
   }
 `;
 

@@ -6,7 +6,13 @@ import ModalPort from "../../shared/components/ModalPort/ModalPort";
 import ModalAddCompany from "../../shared/components/ModalAddCompany/ModalAddCompany";
 import CompanyList from "../../components/CompanyList/CompanyList";
 import VatDeclarationList from "../../components/VatDeclarationList/VatDeclarationList";
-import { WrapStyled } from "./MainPage.styled";
+import {
+  WrapStyled,
+  DeclarationsContainerWrap,
+  VatDeclarationsContainer,
+  ContainerText,
+  ProfitDeclarationsContainer,
+} from "./MainPage.styled";
 
 const MainPage = () => {
   const [isModalAddCompanyOpen, setIsModalAddCompanyOpen] = useState(false);
@@ -32,6 +38,16 @@ const MainPage = () => {
           </button>
 
           <CompanyList />
+
+          <DeclarationsContainerWrap>
+            <VatDeclarationsContainer>
+              <ContainerText>VAT Declarations</ContainerText>
+            </VatDeclarationsContainer>
+
+            <ProfitDeclarationsContainer>
+              <ContainerText>Profit Declarations</ContainerText>
+            </ProfitDeclarationsContainer>
+          </DeclarationsContainerWrap>
 
           <VatDeclarationList />
 
