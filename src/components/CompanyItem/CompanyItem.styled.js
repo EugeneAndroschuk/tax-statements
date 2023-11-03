@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const CompanyItemWrap = styled.div`
-background-color: grey;
-border: 2px solid grey;
-border-radius: 8px;
+  position: relative;
+  width: 100%;
+  background-color: rgb(245, 245, 245);
+ 
 `;
