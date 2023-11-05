@@ -1,33 +1,37 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import imgVat from "../../assets/images/vat-bgd.jpg";
 import imgProfit from "../../assets/images/profit-bgd.jpg";
 
 export const WrapStyled = styled.div`
 min-height: calc(100vh - 60px);
-background-color: rgb(245, 245, 245);
+background-color: black;
 `;
 
 export const MainPageContainer = styled.div`
-  background-color: white;
+  // background-color: white;
 `;
 
 export const MainSection = styled.section`
-height: calc(100vh - 60px);
+// height: calc(100vh - 60px);
+// border: 1px solid red;
 `;
 
 // export const CompanyContainer = styled(motion.div)``;
 
 export const DeclarationsContainerWrap = styled.div`
   display: flex;
-  gap: 60px;
-  justify-content: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  gap: 30px;
+  
+  // padding-top: 30px;
+  // padding-bottom: 30px;
 `;
 
+export const DeclarationWrap = styled.div``;
+
 export const VatDeclarationsContainer = styled.div`
-  width: 500px;
-  height: 350px;
+  width: 150px;
+  height: 100px;
   background-image: linear-gradient(
       to right,
       rgba(47, 48, 58, 0.6),
@@ -50,8 +54,8 @@ export const VatDeclarationsContainer = styled.div`
 `;
 
 export const ProfitDeclarationsContainer = styled.div`
-  width: 500px;
-  height: 350px;
+  width: 150px;
+  height: 100px;
   background-image: linear-gradient(
       to right,
       rgba(47, 48, 58, 0.6),
@@ -73,18 +77,20 @@ export const ProfitDeclarationsContainer = styled.div`
 `;
 
 export const ContainerText = styled.p`
-font-size: 72px;
+font-size: 18px;
 font-weight: 700;
 color: white;
 `;
 
-export const AmountSection = styled.section`
+export const AmountSection = styled(motion.section)`
 display: flex;
 justify-content: space-between;
+padding-top: 16px;
+padding-bottom: 16px;
 `;
 
 export const Amount = styled.span`
   font-size: 72px;
   font-weight: 700;
-  color: red;
+  color: rgb(186, 85, 211);
 `;

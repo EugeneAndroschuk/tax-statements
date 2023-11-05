@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
   h4,
   h5,
   h6,
-  p, span {
+  p, span, section {
     margin: 0;
     padding: 0;
   }

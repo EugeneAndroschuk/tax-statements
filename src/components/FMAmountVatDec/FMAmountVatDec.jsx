@@ -1,9 +1,14 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { Text, Amount } from "./FMAmountVatDec.styled";
+import { useMotionValue, useTransform, animate } from "framer-motion";
+import {
+  Wrap,
+  Text,
+  Amount,
+} from "./FMAmountVatDec.styled";
 
 const FMAmountVatDec = ({ totalVatDeclarations }) => {
+
   const counttotalVatDeclarations = useMotionValue(0);
   const roundedtotalVatDeclarations = useTransform(
     counttotalVatDeclarations,
@@ -19,16 +24,17 @@ const FMAmountVatDec = ({ totalVatDeclarations }) => {
   }, [counttotalVatDeclarations, totalVatDeclarations]);
 
   return (
-    <div>
+    <Wrap>
       <Text>
         <Amount>{roundedtotalVatDeclarations}</Amount>Vat Declarations
       </Text>
-    </div>
+    </Wrap>
   );
 };
 
 FMAmountVatDec.propTypes = {
   totalVatDeclarations: PropTypes.number.isRequired,
+  allVatDeclarations: PropTypes.array.isRequired,
 };
 
 export default FMAmountVatDec;

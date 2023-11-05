@@ -87,6 +87,7 @@ export const MotionSlider = () => {
               transition={{
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 },
+                delay: 0.3,
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
@@ -108,7 +109,7 @@ export const MotionSlider = () => {
           </AnimatePresence>
         </WrapAnimation>
         <Flex>
-          <Arrow onClick={() => paginate(-1)} />
+          {/* <Arrow onClick={() => paginate(-1)} /> */}
 
           {content.map((item, id) => (
             <Bullet
@@ -117,11 +118,11 @@ export const MotionSlider = () => {
                 setPage([id, 0]);
                 setActiveBullet(id);
               }}
-              $bg={activeBullet === id ? "black" : "red"}
+              $bg={activeBullet === id ? "white" : "none"}
             />
           ))}
 
-          <Arrow onClick={() => paginate(1)} />
+          {/* <Arrow onClick={() => paginate(1)} /> */}
         </Flex>
       </Wrap>
     );

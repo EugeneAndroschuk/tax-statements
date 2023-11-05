@@ -1,3 +1,5 @@
+
+import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllVatDeclarationsSelector } from "../../redux/vatDeclarations/vatDeclarationsSelectors";
 import { getAllVatDeclarations } from "../../redux/vatDeclarations/vatDeclarationsThunks";
@@ -15,31 +17,24 @@ import {
 } from "./VatDeclarationList.styled";
 
 
-const VatDeclarationList = () => {
+const VatDeclarationList = ({ allVatDeclarations }) => {
   const [clickedId, setClickedId] = useState(null);
   const [isOpenItem, setIsOpenItem] = useState(false);
 
-    const dispatch = useDispatch();
-    let allVatDeclarationsGrouped = [];
+  let allVatDeclarationsGrouped = [];
 
-  useEffect(() => {
-    dispatch(getAllVatDeclarations());
-  }, [dispatch]);
+  if (allVatDeclarations.length)
+    allVatDeclarationsGrouped = groupDeclarationsByPeriod(allVatDeclarations);
 
-    const { allVatDeclarations } = useSelector(getAllVatDeclarationsSelector);
-
-  if (allVatDeclarations.length) allVatDeclarationsGrouped = groupDeclarationsByPeriod(allVatDeclarations);
-  
   const onOpenAccordion = (id) => {
     if (id === clickedId) {
       setClickedId(null);
       setIsOpenItem(false);
-    }
-    else {
+    } else {
       setClickedId(id);
       setIsOpenItem(true);
     }
-  }
+  };
 
   return (
     <div>
@@ -76,6 +71,10 @@ const VatDeclarationList = () => {
       </ul>
     </div>
   );
+};
+
+VatDeclarationList.propTypes = {
+  allVatDeclarations: PropTypes.array.isRequired,
 };
 
 export default VatDeclarationList;

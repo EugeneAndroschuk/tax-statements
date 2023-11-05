@@ -1,17 +1,22 @@
 
 import PropTypes from "prop-types";
-import { CompanyItemWrap } from "./CompanyItem.styled";
-import { Link } from "react-router-dom";
+
+import {
+  CompanyItemWrap,
+  LinkStyled, CompanyName,
+  CompanyCode,
+  CompanyAddress,
+} from "./CompanyItem.styled";
 
 const CompanyItem = ({company}) => {
     return (
       <CompanyItemWrap>
-        <Link to={`/company/${company._id}`}>
-          <div>{company.name}</div>
-          <div>{company.regCode}</div>
-          <div>{company.taxCode}</div>
-          <div>{company.address}</div>
-        </Link>
+        <LinkStyled to={`/company/${company._id}`}>
+          <CompanyName>{company.name}</CompanyName>
+          <CompanyCode>Registration code {company.regCode}</CompanyCode>
+          <CompanyCode>VAT number {company.taxCode}</CompanyCode>
+          <CompanyAddress>Legal address {company.address}</CompanyAddress>
+        </LinkStyled>
       </CompanyItemWrap>
     );
 }
