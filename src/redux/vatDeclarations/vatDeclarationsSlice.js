@@ -2,6 +2,7 @@ import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   getAllVatDeclarations,
   getVatDeclarationById,
+  getVatDeclarationsByCompany,
   addVatDeclaration,
   deleteVatDeclaration,
   updateVatDeclaration,
@@ -29,6 +30,7 @@ export const vatDeclarationsSlice = createSlice({
         isAnyOf(
           getAllVatDeclarations.pending,
           getVatDeclarationById.pending,
+          getVatDeclarationsByCompany.pending,
           deleteVatDeclaration.pending
         ),
         (state) => {
@@ -46,6 +48,7 @@ export const vatDeclarationsSlice = createSlice({
         isAnyOf(
           getAllVatDeclarations.rejected,
           getVatDeclarationById.rejected,
+          getVatDeclarationsByCompany.rejected,
           deleteVatDeclaration.rejected
         ),
         (state, action) => {
@@ -62,6 +65,11 @@ export const vatDeclarationsSlice = createSlice({
         }
       )
       .addMatcher(isAnyOf(getAllVatDeclarations.fulfilled), (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addMatcher(isAnyOf(getVatDeclarationsByCompany.fulfilled), (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
