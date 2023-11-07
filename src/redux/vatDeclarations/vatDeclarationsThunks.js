@@ -20,7 +20,7 @@ export const getVatDeclarationsByCompany = createAsyncThunk(
   async (companyId, thunkAPI) => {
     try {
       const response = await axiosPrivate.get(
-        `/api/vatDeclarations/${companyId}`
+        `/api/vatDeclarations?companyId=${companyId}`
       );
       return response.data;
     } catch (e) {
