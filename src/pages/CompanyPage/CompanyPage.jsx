@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import { useState } from "react";
 import ModalPort from "../../shared/components/ModalPort/ModalPort";
 import ModalAddVat from "../../shared/components/ModalAddVat/ModalAddVat";
+import Container from "../../styles/Container";
 
 const CompanyPage = () => {
 
@@ -12,7 +13,8 @@ const CompanyPage = () => {
     };
     return (
       <div>
-        <Outlet />
+          <Outlet />
+
         <button type="button" onClick={() => setIsModalAddVatOpen(true)}>
           ADD VAT DECLARATION
         </button>

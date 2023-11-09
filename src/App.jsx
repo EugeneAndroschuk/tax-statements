@@ -6,7 +6,7 @@ import SharedLayout from "./shared/components/SharedLayout/SharedLayout";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import MainPage from "./pages/MainPage/MainPage";
 import CompanyPage from "./pages/CompanyPage/CompanyPage";
-import CompanyCard from "./components/CompanyCard/CompanyCard";
+import CompanyData from "./components/CompanyData/CompanyData";
 
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
@@ -45,7 +45,7 @@ const routes = [
         children: [
           {
             path: "/company/:companyId",
-            element: <PrivateRoute component={CompanyCard} />,
+            element: <PrivateRoute component={CompanyData} />,
           },
         ],
       },
