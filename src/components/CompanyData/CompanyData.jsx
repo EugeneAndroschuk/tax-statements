@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router";
+import { Outlet, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  AnimatePresence,
+} from "framer-motion";
+import img from "../../assets/images/company-img2.jpg";
 import { getAllCompaniesSelector } from "../../redux/companies/companiesSelectors";
 import { getCompanyById } from "../../redux/companies/companiesThunks";
 import { getVatDeclarationsByCompany } from "../../redux/vatDeclarations/vatDeclarationsThunks";
@@ -9,24 +17,38 @@ import { getTaxLoad } from "../../utils/taxLoad";
 import { getMonthAndYear } from "../../utils/getMonth";
 import Container from "../../styles/Container";
 import CompanyDataVat from "../CompanyDataVat/CompanyDataVat";
+import CompanyDataProfit from "../CompanyDataProfit/CompanyDataProfit";
+import CompanyVatDeclarationList from "../CompanyVatDeclarationList/CompanyVatDeclarationList";
 import {
   TitleSection,
+  TitleTextWrap,
   TitleText,
+  TitleImageWrap,
+  TitleImage,
   LatestDataSection,
+  VatDataWrap,
+  ProfitDataWrap,
   MonthData,
   QuarterData,
   DataText,
   DataAmount,
+  VatOverlayWrap,
+  ProfitOverlayWrap,
+  VatOverlay,
+  ShowDeclarationsBtn,
 } from "./CompanyData.styled";
 
 
 const CompanyData = () => {
   const { companyId } = useParams();
   const dispatch = useDispatch();
+  const [vatOverlayOpen, setVatOverlayOpen] = useState(false);
+  const [profitOverlayOpen, setProfitOverlayOpen] = useState(false);
   const itemRef = useRef(null);
 
   const scrollTo = () => {
-    itemRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => itemRef.current.scrollIntoView({ behavior: "smooth", block: "start" }), 2000);
+    // itemRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   useEffect(() => {
@@ -41,43 +63,97 @@ const CompanyData = () => {
     return (
       <div>
         <TitleSection>
-          {allCompanies.length > 0 && (
-            <TitleText>{allCompanies[0].name}</TitleText>
-          )}
+          <TitleTextWrap>
+            {allCompanies.length === 1 && (
+              <TitleText>{allCompanies[0].name}</TitleText>
+            )}
+          </TitleTextWrap>
+          <TitleImageWrap>
+            <TitleImage src={img} alt="company image" />
+          </TitleImageWrap>
         </TitleSection>
 
         <LatestDataSection>
-          <MonthData>
-            <DataText>latest Month data</DataText>
-            <DataAmount>
-              {getMonthAndYear(allVatDeclarations[0].period)}
-            </DataAmount>
-            <button type="button" onClick={scrollTo}>Show</button>
-          </MonthData>
+          <VatDataWrap
+            onMouseOver={() => setVatOverlayOpen(true)}
+            onMouseOut={() => setVatOverlayOpen(false)}
+          >
+            <CompanyDataVat allVatDeclarations={allVatDeclarations} />
+            <VatOverlayWrap>
+              <AnimatePresence>
+                {vatOverlayOpen && (
+                  <VatOverlay
+                    initial={{ y: "100%" }}
+                    animate={{ y: "0" }}
+                    exit={{ y: "100%" }}
+                    transition={{
+                      y: { type: "auto" },
+                      delay: 0.2,
+                    }}
+                  >
+                    <ShowDeclarationsBtn
+                      to={`/company/${companyId}/vat`}
+                      onClick={scrollTo}
+                    >
+                      Show VAT declarations
+                    </ShowDeclarationsBtn>
+                  </VatOverlay>
+                )}
+              </AnimatePresence>
+            </VatOverlayWrap>
 
-          <QuarterData>
-            <DataText>latest Quarter data</DataText>
-            <DataAmount>
-              {getMonthAndYear(allVatDeclarations[0].period)}
-            </DataAmount>
-          </QuarterData>
+            <MonthData>
+              <DataText>latest Month data</DataText>
+              <DataAmount>
+                {getMonthAndYear(allVatDeclarations[0].period)}
+              </DataAmount>
+            </MonthData>
+          </VatDataWrap>
+
+          <ProfitDataWrap
+            onMouseOver={() => setProfitOverlayOpen(true)}
+            onMouseOut={() => setProfitOverlayOpen(false)}
+          >
+            <CompanyDataProfit allVatDeclarations={allVatDeclarations} />
+            <ProfitOverlayWrap>
+              <AnimatePresence>
+                {profitOverlayOpen && (
+                  <VatOverlay
+                    initial={{ y: "-100%" }}
+                    animate={{ y: "0" }}
+                    exit={{ y: "-100%" }}
+                    transition={{
+                      y: { type: "auto" },
+                      delay: 0.2,
+                    }}
+                  >
+                    <ShowDeclarationsBtn
+                      to={`/company/${companyId}/profit`}
+                      onClick={scrollTo}
+                    >
+                      Show Profit declarations
+                    </ShowDeclarationsBtn>
+                  </VatOverlay>
+                )}
+              </AnimatePresence>
+            </ProfitOverlayWrap>
+            <QuarterData>
+              <DataText>latest Quarter data</DataText>
+              <DataAmount>
+                {getMonthAndYear(allVatDeclarations[0].period)}
+              </DataAmount>
+            </QuarterData>
+          </ProfitDataWrap>
         </LatestDataSection>
 
-        <Container>
-          <CompanyDataVat allVatDeclarations={allVatDeclarations} />
-
-          <ul ref={itemRef}>
-            {allVatDeclarations.length > 0 &&
-              allVatDeclarations.map((item) => (
-                <li key={item._id} style={{display: "flex"}}>
-                  <p>{item.period}</p>
-                  <p>{item.revenue}</p>
-                  <p>{item.vatPayable}</p>
-                  <p>{getTaxLoad(item.revenue, item.vatPayable)}</p>
-                </li>
-              ))}
-          </ul>
-        </Container>
+        {/* <section ref={itemRef}>
+          <Container> */}
+        <Outlet />
+        {/* <CompanyVatDeclarationList
+              allVatDeclarations={allVatDeclarations}
+            /> */}
+        {/* </Container>
+        </section> */}
       </div>
     );
 }

@@ -1,19 +1,20 @@
 
 import PropTypes from "prop-types";
 import { getTotalAmountsVat } from "../../utils/getTotalAmountsVat";
+import { numberToStringWithDivider } from "../../utils/numberToStringWithDivider";
+import { Wrap, Value, Text, Title } from "./CompanyDataVat.styled";
 
 const CompanyDataVat = ({ allVatDeclarations }) => {
     const { totalRevenue, totalVatPayable } =
       getTotalAmountsVat(allVatDeclarations);
     return (
-      <div>
-        <p>
-          <span>{totalRevenue}</span>UAH total revenue
-        </p>
-        <p>
-          <span>{totalVatPayable}</span>UAH total VAT payable
-        </p>
-      </div>
+      <Wrap>
+        <Value>{numberToStringWithDivider(totalRevenue)} UAH</Value>
+        <Text>total revenue</Text>
+        <Value>{numberToStringWithDivider(totalVatPayable)} UAH </Value>
+        <Text>total VAT payable</Text>
+        <Title>VAT</Title>
+      </Wrap>
     );
 }
 

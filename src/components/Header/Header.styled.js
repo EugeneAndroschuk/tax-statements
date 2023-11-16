@@ -16,3 +16,8 @@ align-items: center;
 export const LinkStyled = styled(Link)`
 color: white;
 `;
+
+export const DeclarationLink = styled.a`
+cursor: pointer;
+  color: white;
+`;

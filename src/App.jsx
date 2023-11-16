@@ -7,6 +7,8 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import MainPage from "./pages/MainPage/MainPage";
 import CompanyPage from "./pages/CompanyPage/CompanyPage";
 import CompanyData from "./components/CompanyData/CompanyData";
+import CompanyVatDeclarationList from "./components/CompanyVatDeclarationList/CompanyVatDeclarationList";
+import CompanyProfitDeclarationList from "./components/CompanyProfitDeclarationList/CompanyProfitDeclarationList";
 
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
@@ -46,6 +48,18 @@ const routes = [
           {
             path: "/company/:companyId",
             element: <PrivateRoute component={CompanyData} />,
+            children: [
+              {
+                path: "/company/:companyId/vat",
+                element: <PrivateRoute component={CompanyVatDeclarationList} />,
+              },
+              {
+                path: "/company/:companyId/profit",
+                element: (
+                  <PrivateRoute component={CompanyProfitDeclarationList} />
+                ),
+              },
+            ],
           },
         ],
       },

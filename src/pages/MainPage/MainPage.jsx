@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCompanies } from "../../redux/companies/companiesThunks";
 import { getAllCompaniesSelector } from "../../redux/companies/companiesSelectors";
@@ -34,6 +34,7 @@ import {
 const MainPage = () => {
   const [isModalAddCompanyOpen, setIsModalAddCompanyOpen] = useState(false);
   const [isShowVatDeclarationsList, setIsShowVatDeclarationsList] = useState(false);
+  const itemRef = useRef(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -61,9 +62,18 @@ const MainPage = () => {
     vat = getMillionFromSum(totalVatPayable);
   }
 
+  
+
   const showListVat = (bool) => {
     if (bool) setIsShowVatDeclarationsList(true);
   }
+
+  useEffect(() => {
+    const scrollTo = () => {
+      itemRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    if (isShowVatDeclarationsList) scrollTo();
+  }, [isShowVatDeclarationsList]);
 
     return (
       <WrapStyled>
@@ -113,9 +123,11 @@ const MainPage = () => {
             </DeclarationsContainerWrap>
           </MainSection>
 
-          {isShowVatDeclarationsList && (
-            <VatDeclarationList allVatDeclarations={allVatDeclarations} />
-          )}
+          <section ref={itemRef}>
+            {isShowVatDeclarationsList && (
+              <VatDeclarationList allVatDeclarations={allVatDeclarations} />
+            )}
+          </section>
 
           <button
             style={{ position: "absolute", bottom: "100px", right: "10px" }}

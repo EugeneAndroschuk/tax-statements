@@ -92,5 +92,6 @@ padding-bottom: 16px;
 export const Amount = styled.span`
   font-size: 72px;
   font-weight: 700;
-  color: rgb(186, 85, 211);
+  // color: rgb(186, 85, 211);
+  color: rgb(252, 107, 3);
 `;
