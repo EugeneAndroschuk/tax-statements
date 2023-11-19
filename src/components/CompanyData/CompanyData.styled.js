@@ -2,6 +2,66 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+export const TitleAnimationOverlay = styled.div`
+  position: relative;
+  overflow: hidden;
+  width: calc(100% / 2);
+`;
+
+export const ParallelogramOne = styled.div`
+  @keyframes moveBar {
+    100% {
+      transform: skew(-40deg) translateY(-1000px);
+    }
+  }
+
+  transform: skew(-40deg);
+  position: absolute;
+  left: 100px;
+  // z-index: -1;
+
+  width: 20px;
+  height: 300px;
+  box-shadow: 100px 509px #612271, 20px 300px #612271, -120px 150px #612271;
+  animation: moveBar 15s linear infinite;
+`;
+
+export const ParallelogramTwo = styled.div`
+  @keyframes moveBar {
+    100% {
+      transform: skew(-40deg) translateY(-1000px);
+    }
+  }
+
+  transform: skew(-40deg);
+  position: absolute;
+  left: 100px;
+  // z-index: -1;
+
+  width: 20px;
+  height: 300px;
+  box-shadow: 250px 450px #43174f, -50px 200px #43174f;
+  animation: moveBar 30s linear infinite;
+`;
+
+export const ParallelogramThree = styled.div`
+  @keyframes moveBar {
+    100% {
+      transform: skew(-40deg) translateY(-1000px);
+    }
+  }
+
+  transform: skew(-40deg);
+  position: absolute;
+  left: 100px;
+  // z-index: -1;
+
+  width: 20px;
+  height: 300px;
+  box-shadow: 70px 500px #7b5c83, -100px 200px #7b5c83;
+  animation: moveBar 20s linear infinite;
+`;
+
 export const TitleSection = styled.section`
   width: 100%;
 
@@ -14,10 +74,16 @@ export const TitleSection = styled.section`
 `;
 
 export const TitleTextWrap = styled.div`
-  width: calc(100% / 2);
+  position: relative;
+  top: 0;
+  left: 0;
+
+  // width: calc(100% / 2);
+  width: 100%;
+  height: 100%;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 `;
 

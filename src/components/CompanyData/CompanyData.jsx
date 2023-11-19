@@ -20,6 +20,10 @@ import CompanyDataVat from "../CompanyDataVat/CompanyDataVat";
 import CompanyDataProfit from "../CompanyDataProfit/CompanyDataProfit";
 import CompanyVatDeclarationList from "../CompanyVatDeclarationList/CompanyVatDeclarationList";
 import {
+  TitleAnimationOverlay,
+  ParallelogramOne,
+  ParallelogramTwo,
+  ParallelogramThree,
   TitleSection,
   TitleTextWrap,
   TitleText,
@@ -63,11 +67,21 @@ const CompanyData = () => {
     return (
       <div>
         <TitleSection>
-          <TitleTextWrap>
+          <TitleAnimationOverlay>
+            <ParallelogramOne></ParallelogramOne>
+            <ParallelogramTwo></ParallelogramTwo>
+            <ParallelogramThree></ParallelogramThree>
+            <TitleTextWrap>
+              {allCompanies.length === 1 && (
+                <TitleText>{allCompanies[0].name}</TitleText>
+              )}
+            </TitleTextWrap>
+          </TitleAnimationOverlay>
+          {/* <TitleTextWrap>
             {allCompanies.length === 1 && (
               <TitleText>{allCompanies[0].name}</TitleText>
             )}
-          </TitleTextWrap>
+          </TitleTextWrap> */}
           <TitleImageWrap>
             <TitleImage src={img} alt="company image" />
           </TitleImageWrap>
