@@ -54,11 +54,19 @@ export const MotionSlider = () => {
   
   const i = wrap(0, content.length, page);
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {setPage([page + 1, 1]); setActiveBullet(page + 1)}, 5000);
-  //   return () => clearTimeout(timeout);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (page + 1 < content.length && page + 1 >= 0) {
+        setPage([page + 1, 0]);
+        setActiveBullet(page + 1);
+      } else if (page + 1 === content.length) {
+        setPage([0, 0]);
+        setActiveBullet(0);
+      }
+    }, 3000);
+    return () => clearTimeout(timeout);
   
-  // }, [page]);
+  }, [content.length, page]);
 
     const paginate = (newDirection) => {
       if (page + newDirection < content.length && page + newDirection >= 0) {

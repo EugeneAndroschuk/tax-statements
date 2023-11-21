@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { Suspense } from "react";
 import { PersistGate } from "redux-persist/integration/react";
@@ -15,7 +16,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <PersistGate loading={null} persistor={persistor}>
         <GlobalStyles />
         <Suspense fallback="loading...">
-          <App />
+          <BrowserRouter> <App /></BrowserRouter>
+         
         </Suspense>
       </PersistGate>
     </Provider>

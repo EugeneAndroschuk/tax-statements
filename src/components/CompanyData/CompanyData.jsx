@@ -64,8 +64,14 @@ const CompanyData = () => {
   const { allVatDeclarations, total} = useSelector(getAllVatDeclarationsSelector);
 
 
-    return (
-      <div>
+  return (
+    <>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        exit={{ opacity: 0, transition: { duration: 0.3 } }}
+        // variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
+      >
         <TitleSection>
           <TitleAnimationOverlay>
             <ParallelogramOne></ParallelogramOne>
@@ -162,14 +168,16 @@ const CompanyData = () => {
 
         {/* <section ref={itemRef}>
           <Container> */}
-        <Outlet />
+
         {/* <CompanyVatDeclarationList
               allVatDeclarations={allVatDeclarations}
             /> */}
         {/* </Container>
         </section> */}
-      </div>
-    );
+      </motion.div>
+      <Outlet />
+    </>
+  );
 }
 
 export default CompanyData;
