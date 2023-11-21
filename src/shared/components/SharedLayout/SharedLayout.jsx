@@ -11,7 +11,6 @@ const SharedLayout = () => {
   const goToTopRef = useRef(null);
   const { pathname } = useLocation();
   const shouldRenderGoToTopBtn = pathname.includes("/company")
-  console.log(pathname);
 
   const scrollTo = () => {
     goToTopRef.current.scrollIntoView({

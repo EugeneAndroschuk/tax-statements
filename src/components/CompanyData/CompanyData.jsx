@@ -51,7 +51,14 @@ const CompanyData = () => {
   const itemRef = useRef(null);
 
   const scrollTo = () => {
-    setTimeout(() => itemRef.current.scrollIntoView({ behavior: "smooth", block: "start" }), 2000);
+    if (itemRef) setTimeout(
+        () =>
+          itemRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          }),
+        2000
+      );
     // itemRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 

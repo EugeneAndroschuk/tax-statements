@@ -10,7 +10,8 @@ import {
 import { userLogout } from "../auth/authThunks";
 
 const initialState = {
-  updateSuccessful: false,
+  updateSuccessfull: false,
+  deleteSuccessfull: false,
   items: { total: null, allVatDeclarations: [] },
   isLoading: false,
   error: null,
@@ -20,8 +21,11 @@ export const vatDeclarationsSlice = createSlice({
   name: "vatDeclarations",
   initialState,
   reducers: {
-    setUpdateSuccessful: (state, action) => {
-      state.updateSuccessful = action.payload;
+    setUpdateSuccessfull: (state, action) => {
+      state.updateSuccessfull = action.payload;
+    },
+    setDeleteSuccessfull: (state, action) => {
+      state.deleteSuccessfull = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -41,7 +45,7 @@ export const vatDeclarationsSlice = createSlice({
         isAnyOf(updateVatDeclaration.pending, addVatDeclaration.pending),
         (state) => {
           state.isLoading = true;
-          state.updateSuccessful = false;
+          state.updateSuccessfull = false;
         }
       )
       .addMatcher(
@@ -60,7 +64,7 @@ export const vatDeclarationsSlice = createSlice({
         isAnyOf(updateVatDeclaration.rejected, addVatDeclaration.rejected),
         (state, action) => {
           state.isLoading = false;
-          state.updateSuccessful = false;
+          state.updateSuccessfull = false;
           state.error = action.payload;
         }
       )
@@ -69,11 +73,14 @@ export const vatDeclarationsSlice = createSlice({
         state.error = null;
         state.items = action.payload;
       })
-      .addMatcher(isAnyOf(getVatDeclarationsByCompany.fulfilled), (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
-      })
+      .addMatcher(
+        isAnyOf(getVatDeclarationsByCompany.fulfilled),
+        (state, action) => {
+          state.isLoading = false;
+          state.error = null;
+          state.items = action.payload;
+        }
+      )
       .addMatcher(isAnyOf(getVatDeclarationById.fulfilled), (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -82,13 +89,14 @@ export const vatDeclarationsSlice = createSlice({
       })
       .addMatcher(isAnyOf(addVatDeclaration.fulfilled), (state) => {
         state.isLoading = false;
-        state.updateSuccessful = true;
+        state.updateSuccessfull = true;
         state.error = null;
         // state.items.push(action.payload);
       })
       .addMatcher(isAnyOf(deleteVatDeclaration.fulfilled), (state) => {
         state.isLoading = false;
         state.error = null;
+        state.deleteSuccessfull = true;
 
         // const index = state.items.findIndex(
         //   (drive) => drive._id === action.payload._id
@@ -97,7 +105,7 @@ export const vatDeclarationsSlice = createSlice({
       })
       .addMatcher(isAnyOf(updateVatDeclaration.fulfilled), (state) => {
         state.isLoading = false;
-        state.updateSuccessful = true;
+        state.updateSuccessfull = true;
         state.error = null;
 
         // const index = state.items.findIndex(
@@ -114,4 +122,5 @@ export const vatDeclarationsSlice = createSlice({
 });
 
 export const vatDeclarationsReducer = vatDeclarationsSlice.reducer;
-export const { setUpdateSuccessful } = vatDeclarationsSlice.actions;
+export const { setUpdateSuccessfull, setDeleteSuccessfull } =
+  vatDeclarationsSlice.actions;

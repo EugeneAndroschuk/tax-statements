@@ -1,7 +1,13 @@
 
-import { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 import { getAllVatDeclarationsSelector } from "../../redux/vatDeclarations/vatDeclarationsSelectors";
+import { getVatDeclarationsByCompany} from "../../redux/vatDeclarations/vatDeclarationsThunks";
+import { getDeleteSuccessfulSelector } from "../../redux/vatDeclarations/vatDeclarationsSelectors";
+import { getUpdateSuccessfulSelector } from "../../redux/vatDeclarations/vatDeclarationsSelectors";
+import { setDeleteSuccessfull } from "../../redux/vatDeclarations/vatDeclarationsSlice";
+import { setUpdateSuccessfull } from "../../redux/vatDeclarations/vatDeclarationsSlice";
 import CompanyVatDeclarationItem from "../CompanyVatDeclarationItem/CompanyVatDeclarationItem";
 import Container from "../../styles/Container";
 import {
@@ -15,11 +21,35 @@ import {
 } from "./CompanyVatDeclarationList.styled";
 
 const CompanyVatDeclarationList = () => {
-    const itemRef = useRef(null);
+  const dispatch = useDispatch();
+  const { companyId } = useParams();
+  const [declarations, setDeclarations] = useState([]);
+  const itemRef = useRef(null);
+  const { allVatDeclarations, total } = useSelector(
+    getAllVatDeclarationsSelector
+  );
+  const deleteSuccess = useSelector(getDeleteSuccessfulSelector);
+  const updateSuccess = useSelector(getUpdateSuccessfulSelector);
 
-    const { allVatDeclarations, total } = useSelector(
-      getAllVatDeclarationsSelector
-    );
+  useEffect(() => { 
+    if (deleteSuccess) {
+      dispatch(getVatDeclarationsByCompany(companyId));
+      dispatch(setDeleteSuccessfull(false));
+    }
+  }, [companyId, deleteSuccess, dispatch]);
+
+  useEffect(() => {
+    if (updateSuccess) {
+      dispatch(getVatDeclarationsByCompany(companyId));
+      dispatch(setUpdateSuccessfull(false));
+    }
+  }, [companyId, dispatch, updateSuccess]);
+  
+  useEffect(() => {
+    setDeclarations(allVatDeclarations);
+  }, [allVatDeclarations]);
+
+   
 
     useEffect(() => {
         const scrollTo = () => {
@@ -51,7 +81,7 @@ const CompanyVatDeclarationList = () => {
             </TableTitleItem>
           </TableTitleList>
           <DeclarationsList>
-            {allVatDeclarations.map((item) => (
+            {declarations.map((item) => (
               <DeclarationsItem key={item._id}>
                 <CompanyVatDeclarationItem item={item} />
               </DeclarationsItem>
