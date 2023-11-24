@@ -1,3 +1,5 @@
 export const getTaxLoad = (reveneu, vatPayable) => {
-    return vatPayable * 100 / reveneu;
+    const taxLoad = (vatPayable * 100) / reveneu;
+    return taxLoad.toFixed(2);
+    // return taxLoad;
 }

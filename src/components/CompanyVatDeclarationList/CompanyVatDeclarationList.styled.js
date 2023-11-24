@@ -35,4 +35,10 @@ export const DeclarationsItem = styled.li`
   background-color: white;
   margin-bottom: 5px;
   border-radius: 8px;
+
+  &:hover, &:focus {
+    cursor: pointer;
+    scale: 1.005;
+    font-weight: 700;
+  }
 `;

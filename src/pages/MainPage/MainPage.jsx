@@ -76,11 +76,6 @@ const MainPage = () => {
   }, [isShowVatDeclarationsList]);
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      exit={{ opacity: 0, transition: { duration: 0.3 } }}
-      variants={{ visible: { transition: { staggerChildren: 0.3 } } }}>
       <WrapStyled>
         <MotionSlider />
         <Container style={{ overflow: "hidden" }}>
@@ -149,7 +144,6 @@ const MainPage = () => {
           )}
         </Container>
       </WrapStyled>
-    </motion.div>
   );
 }
 

@@ -24,8 +24,8 @@ import RestrictedRoute from "./pages/routes/RestrictedRoute";
 import PrivateRoute from "./pages/routes/PrivateRoute";
 
 function App() {
-  // const routes = [
-  let element = useRoutes([
+  const routes = createBrowserRouter([
+  // let element = useRoutes([
     {
       path: "/",
       // element: <PrivateRoute component={SharedLayout} />,
@@ -77,7 +77,7 @@ function App() {
     },
   ]);
 
-  const location = useLocation();
+  // const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -85,17 +85,15 @@ function App() {
     dispatch(userRefresh());
   }, [dispatch]);
 
-  // return <RouterProvider router={createBrowserRouter(routes)} />;
+  return <RouterProvider router={routes} />;
 
-  if (!element) return null;
+  // if (!element) return null;
 
-  return (
-    <AnimatePresence mode="wait" initial={false}>
-      {React.cloneElement(element, { key: location.pathname })}
-    </AnimatePresence>
-  );
-
-  // return element;
+  // return (
+  //   <AnimatePresence mode="wait" initial={false}>
+  //     {React.cloneElement(element, { key: location.pathname })}
+  //   </AnimatePresence>
+  // );
 }
 
 export default App;

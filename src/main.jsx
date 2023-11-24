@@ -16,8 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <PersistGate loading={null} persistor={persistor}>
         <GlobalStyles />
         <Suspense fallback="loading...">
-          <BrowserRouter> <App /></BrowserRouter>
-         
+          <App />
         </Suspense>
       </PersistGate>
     </Provider>

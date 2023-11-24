@@ -66,7 +66,7 @@ export const deleteVatDeclaration = createAsyncThunk(
 );
 
 export const updateVatDeclaration = createAsyncThunk(
-  "vatDeclarations/deleteVatDeclaration",
+  "vatDeclarations/updateVatDeclaration",
   async ({ vatDeclarationId, ...credentials }, thunkAPI) => {
     try {
       await axiosPrivate.put(
@@ -74,6 +74,7 @@ export const updateVatDeclaration = createAsyncThunk(
         credentials
       );
     } catch (e) {
+      console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }

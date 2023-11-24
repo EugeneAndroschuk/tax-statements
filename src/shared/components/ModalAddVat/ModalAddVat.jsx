@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addVatDeclaration } from "../../../redux/vatDeclarations/vatDeclarationsThunks";
+import { updateVatDeclaration } from "../../../redux/vatDeclarations/vatDeclarationsThunks";
+import { getMonthAndYear } from "../../../utils/getMonth";
 import CloseIcon from "@mui/icons-material/Close";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -20,24 +22,32 @@ import {
 
 
 const MONTHS = [
-  // { name: "january", value: "01-31" },
-  { name: "fabruary", value: "02-28" },
-  { name: "march", value: "03-31" },
-  { name: "april", value: "04-30" },
-  { name: "may", value: "05-31" },
-  { name: "june", value: "06-30" },
-  { name: "july", value: "07-31" },
-  { name: "august", value: "08-31" },
-  { name: "september", value: "09-30" },
-  { name: "october", value: "10-31" },
-  { name: "november", value: "11-30" },
-  { name: "december", value: "12-31" },
+  { name: "January", value: "01-31" },
+  { name: "February", value: "02-28" },
+  { name: "March", value: "03-31" },
+  { name: "April", value: "04-30" },
+  { name: "May", value: "05-31" },
+  { name: "June", value: "06-30" },
+  { name: "July", value: "07-31" },
+  { name: "August", value: "08-31" },
+  { name: "September", value: "09-30" },
+  { name: "October", value: "10-31" },
+  { name: "November", value: "11-30" },
+  { name: "December", value: "12-31" },
 ];
 
-const ModalAddVat = ({ toggleModal }) => {
-  const [month, setMonth] = useState("01-31");
+const ModalAddVat = ({ toggleModal, id = null, period, revenue, vatPayable }) => {
+  const [month, setMonth] = useState(()=>setInitialState());
   const dispatch = useDispatch();
   const { companyId } = useParams();
+
+  function setInitialState() {
+    if (!id) return "01-31"; else {
+      const initMonth = getMonthAndYear(period).split(" ")[0];
+
+      return MONTHS.find((month) => month.name === initMonth).value;
+    }
+  }
 
   const handleChange = (event) => {
     setMonth(event.target.value);
@@ -52,16 +62,33 @@ const ModalAddVat = ({ toggleModal }) => {
   } = useForm();
 
   useEffect(() => {
-    setValue("year", 2023);
-  }, [setValue]);
+    if (!id) setValue("year", 2023);
+    else {
+      // const initMonth = getMonthAndYear(period).split(" ")[0];
+      
+      // setMonth(MONTHS.find((month) => month.name === initMonth).value);
+      setValue("year", getMonthAndYear(period).split(" ")[1]);
+      setValue("revenue", revenue);
+      setValue("vatPayable", vatPayable);
+    }
+  }, [id, period, revenue, setValue, vatPayable]);
 
   const onSubmitForm = (data) => {
     const { month, year, revenue, vatPayable } = data;
+    console.log(month)
 
     const period = month + "-" + year;
 
-    dispatch(
+    if (!id) dispatch(
       addVatDeclaration({ period, revenue, vatPayable, company: companyId })
+    ); else dispatch(
+      updateVatDeclaration({
+        vatDeclarationId: id,
+        period,
+        revenue,
+        vatPayable,
+        company: companyId,
+      })
     );
     toggleModal();
   };
@@ -94,7 +121,7 @@ const ModalAddVat = ({ toggleModal }) => {
               inputProps={{ "aria-label": "Without label" }}
             >
               <MenuItem value="01-31">
-                <em>january</em>
+                <em>January</em>
               </MenuItem>
               {MONTHS.map((month) => (
                 <MenuItem key={month.name} value={`${month.value}`}>
@@ -145,6 +172,10 @@ const ModalAddVat = ({ toggleModal }) => {
 
 ModalAddVat.propTypes = {
   toggleModal: PropTypes.func.isRequired,
+  id: PropTypes.string,
+  period: PropTypes.string,
+  revenue: PropTypes.number,
+  vatPayable: PropTypes.number,
 };
 
 export default ModalAddVat;

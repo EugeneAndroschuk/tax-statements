@@ -72,118 +72,112 @@ const CompanyData = () => {
 
 
   return (
-    <>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        exit={{ opacity: 0, transition: { duration: 0.3 } }}
-        // variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
-      >
-        <TitleSection>
-          <TitleAnimationOverlay>
-            <ParallelogramOne></ParallelogramOne>
-            <ParallelogramTwo></ParallelogramTwo>
-            <ParallelogramThree></ParallelogramThree>
-            <TitleTextWrap>
-              {allCompanies.length === 1 && (
-                <TitleText>{allCompanies[0].name}</TitleText>
-              )}
-            </TitleTextWrap>
-          </TitleAnimationOverlay>
-          {/* <TitleTextWrap>
+    <div>
+      <TitleSection>
+        <TitleAnimationOverlay>
+          <ParallelogramOne></ParallelogramOne>
+          <ParallelogramTwo></ParallelogramTwo>
+          <ParallelogramThree></ParallelogramThree>
+          <TitleTextWrap>
+            {allCompanies.length === 1 && (
+              <TitleText>{allCompanies[0].name}</TitleText>
+            )}
+          </TitleTextWrap>
+        </TitleAnimationOverlay>
+        {/* <TitleTextWrap>
             {allCompanies.length === 1 && (
               <TitleText>{allCompanies[0].name}</TitleText>
             )}
           </TitleTextWrap> */}
-          <TitleImageWrap>
-            <TitleImage src={img} alt="company image" />
-          </TitleImageWrap>
-        </TitleSection>
+        <TitleImageWrap>
+          <TitleImage src={img} alt="company image" />
+        </TitleImageWrap>
+      </TitleSection>
 
-        <LatestDataSection>
-          <VatDataWrap
-            onMouseOver={() => setVatOverlayOpen(true)}
-            onMouseOut={() => setVatOverlayOpen(false)}
-          >
-            <CompanyDataVat allVatDeclarations={allVatDeclarations} />
-            <VatOverlayWrap>
-              <AnimatePresence>
-                {vatOverlayOpen && (
-                  <VatOverlay
-                    initial={{ y: "100%" }}
-                    animate={{ y: "0" }}
-                    exit={{ y: "100%" }}
-                    transition={{
-                      y: { type: "auto" },
-                      delay: 0.2,
-                    }}
+      <LatestDataSection>
+        <VatDataWrap
+          onMouseOver={() => setVatOverlayOpen(true)}
+          onMouseOut={() => setVatOverlayOpen(false)}
+        >
+          <CompanyDataVat allVatDeclarations={allVatDeclarations} />
+          <VatOverlayWrap>
+            <AnimatePresence>
+              {vatOverlayOpen && (
+                <VatOverlay
+                  initial={{ y: "100%" }}
+                  animate={{ y: "0" }}
+                  exit={{ y: "100%" }}
+                  transition={{
+                    y: { type: "auto" },
+                    delay: 0.2,
+                  }}
+                >
+                  <ShowDeclarationsBtn
+                    to={`/company/${companyId}/vat`}
+                    onClick={scrollTo}
                   >
-                    <ShowDeclarationsBtn
-                      to={`/company/${companyId}/vat`}
-                      onClick={scrollTo}
-                    >
-                      Show VAT declarations
-                    </ShowDeclarationsBtn>
-                  </VatOverlay>
-                )}
-              </AnimatePresence>
-            </VatOverlayWrap>
+                    Show VAT declarations
+                  </ShowDeclarationsBtn>
+                </VatOverlay>
+              )}
+            </AnimatePresence>
+          </VatOverlayWrap>
 
-            <MonthData>
-              <DataText>latest Month data</DataText>
-              <DataAmount>
-                {getMonthAndYear(allVatDeclarations[0].period)}
-              </DataAmount>
-            </MonthData>
-          </VatDataWrap>
+          <MonthData>
+            <DataText>latest Month data</DataText>
+            <DataAmount>
+              {getMonthAndYear(allVatDeclarations[0].period)}
+            </DataAmount>
+          </MonthData>
+        </VatDataWrap>
 
-          <ProfitDataWrap
-            onMouseOver={() => setProfitOverlayOpen(true)}
-            onMouseOut={() => setProfitOverlayOpen(false)}
-          >
-            <CompanyDataProfit allVatDeclarations={allVatDeclarations} />
-            <ProfitOverlayWrap>
-              <AnimatePresence>
-                {profitOverlayOpen && (
-                  <VatOverlay
-                    initial={{ y: "-100%" }}
-                    animate={{ y: "0" }}
-                    exit={{ y: "-100%" }}
-                    transition={{
-                      y: { type: "auto" },
-                      delay: 0.2,
-                    }}
+        <ProfitDataWrap
+          onMouseOver={() => setProfitOverlayOpen(true)}
+          onMouseOut={() => setProfitOverlayOpen(false)}
+        >
+          <CompanyDataProfit allVatDeclarations={allVatDeclarations} />
+          <ProfitOverlayWrap>
+            <AnimatePresence>
+              {profitOverlayOpen && (
+                <VatOverlay
+                  initial={{ y: "-100%" }}
+                  animate={{ y: "0" }}
+                  exit={{ y: "-100%" }}
+                  transition={{
+                    y: { type: "auto" },
+                    delay: 0.2,
+                  }}
+                >
+                  <ShowDeclarationsBtn
+                    to={`/company/${companyId}/profit`}
+                    onClick={scrollTo}
                   >
-                    <ShowDeclarationsBtn
-                      to={`/company/${companyId}/profit`}
-                      onClick={scrollTo}
-                    >
-                      Show Profit declarations
-                    </ShowDeclarationsBtn>
-                  </VatOverlay>
-                )}
-              </AnimatePresence>
-            </ProfitOverlayWrap>
-            <QuarterData>
-              <DataText>latest Quarter data</DataText>
-              <DataAmount>
-                {getMonthAndYear(allVatDeclarations[0].period)}
-              </DataAmount>
-            </QuarterData>
-          </ProfitDataWrap>
-        </LatestDataSection>
+                    Show Profit declarations
+                  </ShowDeclarationsBtn>
+                </VatOverlay>
+              )}
+            </AnimatePresence>
+          </ProfitOverlayWrap>
+          <QuarterData>
+            <DataText>latest Quarter data</DataText>
+            <DataAmount>
+              {getMonthAndYear(allVatDeclarations[0].period)}
+            </DataAmount>
+          </QuarterData>
+        </ProfitDataWrap>
+      </LatestDataSection>
 
-        {/* <section ref={itemRef}>
+      {/* <section ref={itemRef}>
           <Container> */}
 
-        {/* <CompanyVatDeclarationList
+      {/* <CompanyVatDeclarationList
               allVatDeclarations={allVatDeclarations}
             /> */}
-        {/* </Container>
+      {/* </Container>
         </section> */}
-      </motion.div>
+
       <Outlet />
-    </>
+    </div>
   );
 }
 

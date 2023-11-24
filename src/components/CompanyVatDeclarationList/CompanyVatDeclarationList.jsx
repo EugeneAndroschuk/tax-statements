@@ -21,6 +21,7 @@ import {
 } from "./CompanyVatDeclarationList.styled";
 
 const CompanyVatDeclarationList = () => {
+  
   const dispatch = useDispatch();
   const { companyId } = useParams();
   const [declarations, setDeclarations] = useState([]);
@@ -57,9 +58,11 @@ const CompanyVatDeclarationList = () => {
             behavior: "smooth",
             block: "start",
           });
-        };
+      };
 
-        scrollTo();
+      const timeout = setTimeout(() => scrollTo(), 1);
+
+      return () => clearTimeout(timeout);
      }, []);
 
     return (
@@ -82,8 +85,11 @@ const CompanyVatDeclarationList = () => {
           </TableTitleList>
           <DeclarationsList>
             {declarations.map((item) => (
-              <DeclarationsItem key={item._id}>
-                <CompanyVatDeclarationItem item={item} />
+              <DeclarationsItem
+                key={item._id}
+                
+              >
+                <CompanyVatDeclarationItem item={item}/>
               </DeclarationsItem>
             ))}
           </DeclarationsList>
