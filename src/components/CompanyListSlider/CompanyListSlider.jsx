@@ -20,25 +20,37 @@ import {
 
  
   
-  const variants = {
-    enter: (direction) => {
-      return {
-        x: direction > 0 ? 1000 : -1000,
-        opacity: 0,
-      };
-    },
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction) => {
-      return {
-        zIndex: 0,
-        x: direction < 0 ? 1000 : -1000,
-        opacity: 0,
-      };
-    },
+//   const variants = {
+//     enter: (direction) => {
+//       return {
+//         x: direction > 0 ? 1000 : -1000,
+//         opacity: 0,
+//       };
+//     },
+//     center: {
+//       zIndex: 1,
+//       x: 0,
+//       opacity: 1,
+//     },
+//     exit: (direction) => {
+//       return {
+//         zIndex: 0,
+//         x: direction < 0 ? 1000 : -1000,
+//         opacity: 0,
+//       };
+//     },
+// };
+
+const variants = {
+  enter: {
+    opacity: 0,
+  },
+  center: {
+    opacity: 1,
+  },
+  exit: {
+      opacity: 0,
+  },
 };
   
 const swipeConfidenceThreshold = 10000;
@@ -63,7 +75,7 @@ export const MotionSlider = () => {
         setPage([0, 0]);
         setActiveBullet(0);
       }
-    }, 3000);
+    }, 6000);
     return () => clearTimeout(timeout);
   
   }, [content.length, page]);
@@ -84,17 +96,16 @@ export const MotionSlider = () => {
     return (
       <Wrap>
         <WrapAnimation>
-          <AnimatePresence initial={false} custom={direction}>
-            <MotionBox
+          {/* <AnimatePresence initial={false} custom={direction}> */}
+          {/* <MotionBox
               key={page}
               custom={direction}
               variants={variants}
               initial="enter"
               animate="center"
-              // exit="exit"
               transition={{
                 x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
+                opacity: { duration: 0.5 },
                 delay: 0.3,
               }}
               drag="x"
@@ -110,9 +121,17 @@ export const MotionSlider = () => {
                 }
               }}
             >
-              {/* <Slider> */}
               {content.length > 0 && <CompanyItem company={content[i]} />}
-              {/* </Slider> */}
+            </MotionBox> */}
+          {/* </AnimatePresence> */}
+          <AnimatePresence mode="wait">
+            <MotionBox
+              key={page}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 3 } }}
+              exit={{ opacity: 0, transition: { duration: 1 } }}
+            >
+              {content.length > 0 && <CompanyItem company={content[page]} />}
             </MotionBox>
           </AnimatePresence>
         </WrapAnimation>

@@ -31,7 +31,7 @@ const VatDeclarationCard = ({ allVatDeclarations, showList }) => {
       <InfoWrap>
         <Title>Total sum :</Title>
         <p style={{ color: "white" }}>
-          <Sum>{rev}</Sum> million UAH total revenue
+          <Sum>{rev}</Sum> million UAH total sales
         </p>
         <p style={{ color: "white" }}>
           <Sum>{vat}</Sum> million UAH total VAT payable

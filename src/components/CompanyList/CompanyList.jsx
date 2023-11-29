@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { getAllCompaniesSelector } from "../../redux/companies/companiesSelectors";
+
 import CompanyItem from "../CompanyItem/CompanyItem";
 import { Wrap, List } from "./CompanyList.styled";
 

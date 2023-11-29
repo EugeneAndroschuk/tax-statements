@@ -18,7 +18,7 @@ export const Wrap = styled.div`
 `;
 
 export const WrapAnimation = styled.div`
-  display: flex;
+  // display: flex;
 `;
 
 export const List = styled.ul`
@@ -52,10 +52,11 @@ background-color: ${props => props.$bg};
 export const Flex = styled.div`
 position: absolute;
 bottom: 16px;
-left: calc((100vw / 2) - 64px);
-z-index: 999;
-display: flex;
+width: 100vw;
+z-index: 1;
 
+display: flex;
+justify-content: center;
 align-items: center;
 gap: 5px;
 `;

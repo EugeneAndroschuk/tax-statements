@@ -3,18 +3,24 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export const HeaderStyled = styled.header`
-// position: relative;
 height: 60px;
-background-color: black;
-overflow: hidden;
+`;
+
+export const HeaderContainerWrap = styled.div`
+  position: absolute;
+
+  width: 100vw;
+  height: 60px;
+
+  background-color: black;
+
+  z-index: 3;
 `;
 
 export const HeaderWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  height: 60px;
 `;
 
 export const LinkStyled = styled(Link)`
@@ -79,9 +85,8 @@ export const CompaniesLink = styled.a`
   //   }
   // }
 `;
-
 export const CompaniesContainer = styled(motion.div)`
 position: absolute;
-top: 59px;
-z-index: 999;
+top: 60px;
+z-index: 2;
 `;

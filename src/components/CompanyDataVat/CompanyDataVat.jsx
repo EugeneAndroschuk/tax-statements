@@ -10,7 +10,7 @@ const CompanyDataVat = ({ allVatDeclarations }) => {
     return (
       <Wrap>
         <Value>{numberToStringWithDivider(totalRevenue)} UAH</Value>
-        <Text>total revenue</Text>
+        <Text>total sales</Text>
         <Value>{numberToStringWithDivider(totalVatPayable)} UAH </Value>
         <Text>total VAT payable</Text>
         <Title>VAT</Title>

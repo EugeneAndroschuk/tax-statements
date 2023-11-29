@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import imgVat from "../../assets/images/vat-bgd.jpg";
+import imgProfit from "../../assets/images/profit-bgd.jpg";
 
 export const Wrap = styled.div`
 display: flex;
@@ -11,9 +11,9 @@ width: calc((1280px / 2) - 30px);
 `;
 
 export const DeclarationsContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 200px;
   border-radius: 5px;
@@ -22,7 +22,7 @@ align-items: center;
       rgba(47, 48, 58, 0.6),
       rgba(47, 48, 58, 0.6)
     ),
-    url("${imgVat}");
+    url("${imgProfit}");
   background-repeat: repeat;
   background-size: cover;
 
@@ -30,7 +30,7 @@ align-items: center;
   transition: scale 0.3s ease-in;
 
   background-image: ${(props) =>
-    props.$active === "true" && `url("${imgVat}")`};
+    props.$active === "true" && `url("${imgProfit}")`};
   scale: ${(props) => props.$active === "true" && "1.02"};
 `;
 

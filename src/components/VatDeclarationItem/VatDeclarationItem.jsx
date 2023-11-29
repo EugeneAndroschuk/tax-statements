@@ -29,7 +29,7 @@ const VatDeclarationItem = ({ declarations, isClicked, isOpen }) => {
             <p>Company</p>
           </li>
           <li>
-            <p>Revenue</p>
+            <p>Sales w/o VAT</p>
           </li>
           <li>
             <p>Vat payable</p>

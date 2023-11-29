@@ -10,6 +10,7 @@ import UserNav from "../UserNav/UserNav";
 import CompaniesMenuContainer from "../CompaniesMenuContainer/CompaniesMenuContainer";
 import {
   HeaderStyled,
+  HeaderContainerWrap,
   HeaderWrap,
   LinkStyled,
   CompaniesLink,
@@ -25,27 +26,41 @@ const Header = () => {
   
   return (
     <HeaderStyled>
-      <Container>
-        <HeaderWrap>
-          <Logo />
-          <LinkStyled to="/">Main</LinkStyled>
-          <CompaniesLink
-            $hover={(activeCompanyMenu || activeCompaniesContainer) ? "true" : "false"}
-            onMouseMove={() => setActiveCompanyMenu(true)}
-            onMouseOut={() => setActiveCompanyMenu(false)}
-          >
-            Companies
-          </CompaniesLink>
+      {/* <HeaderFixedContainer> */}
 
-          {isLoggedIn ? <UserNav /> : <AuthMenu />}
-        </HeaderWrap>
-      </Container>
+      <HeaderContainerWrap>
+        <Container>
+          <HeaderWrap>
+            <Logo />
+            <LinkStyled to="/">Main</LinkStyled>
+            <CompaniesLink
+              $hover={
+                activeCompanyMenu || activeCompaniesContainer ? "true" : "false"
+              }
+              onMouseMove={() => setActiveCompanyMenu(true)}
+              onMouseOut={() => setActiveCompanyMenu(false)}
+            >
+              Companies
+            </CompaniesLink>
+
+            {isLoggedIn ? <UserNav /> : <AuthMenu />}
+          </HeaderWrap>
+        </Container>
+      </HeaderContainerWrap>
       <AnimatePresence>
         {(activeCompanyMenu || activeCompaniesContainer) && (
           <CompaniesContainer
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.3 } }}
-            exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            // initial={{ y: "-100" }}
+            // animate={{ y: "0", transition: { duration: 0.3 } }}
+            // exit={{ y: "-100", transition: { duration: 0.3 } }}
+            initial={{ y: "-100%" }}
+            animate={{ y: "0" }}
+            exit={{ y: "-100%" }}
+            transition={{
+              y: { type: "auto" },
+              delay: 0.2,
+              duration: 5,
+            }}
             onMouseMove={() => setActiveCompaniesContainer(true)}
             onMouseOut={() => setActiveCompaniesContainer(false)}
           >
@@ -53,6 +68,7 @@ const Header = () => {
           </CompaniesContainer>
         )}
       </AnimatePresence>
+      {/* </HeaderFixedContainer> */}
     </HeaderStyled>
   );
 };
