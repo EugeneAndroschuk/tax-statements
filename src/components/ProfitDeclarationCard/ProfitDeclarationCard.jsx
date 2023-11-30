@@ -4,7 +4,6 @@ import { getMillionFromSum } from "../../utils/getMillionFromSum";
 import { getTotalAmountsVat } from "../../utils/getTotalAmountsVat";
 import {
   Wrap,
-  DeclarationsContainer,
   DeclarationsContainerText,
   InfoWrap,
   Title,
@@ -22,18 +21,16 @@ const ProfitDeclarationCard = ({ allProfitDeclarations }) => {
 
   return (
     <Wrap>
-      <DeclarationsContainer $active={btnHover && "true"}>
-        <DeclarationsContainerText $active={btnHover && "true"}>
-          Profit Declarations
-        </DeclarationsContainerText>
-      </DeclarationsContainer>
+      <DeclarationsContainerText $active={btnHover && "true"}>
+        Profit Declarations
+      </DeclarationsContainerText>
 
       <InfoWrap>
         <Title>Total sum :</Title>
-        <p style={{ color: "white" }}>
+        <p>
           <Sum>2</Sum> million UAH total revenue
         </p>
-        <p style={{ color: "white" }}>
+        <p>
           <Sum>5</Sum> million UAH total Profit payable
         </p>
         <ShowBtn

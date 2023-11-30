@@ -12,9 +12,18 @@ export const MainPageContainer = styled.div`
   // background-color: white;
 `;
 
-export const MainSection = styled.section`
-// height: calc(100vh - 60px);
-// border: 1px solid red;
+export const DeclarationCardSection = styled.section`
+  
+`;
+
+export const DeclarationCardTitle = styled.h1`
+font-size: 48px;
+font-weight: 700;
+color: white;
+
+margin-bottom: 36px;
+
+text-align: center;
 `;
 
 // export const CompanyContainer = styled(motion.div)``;
@@ -22,6 +31,7 @@ export const MainSection = styled.section`
 export const DeclarationsContainerWrap = styled.div`
   display: flex;
   gap: 30px;
+  
   
   // padding-top: 30px;
   // padding-bottom: 30px;
@@ -85,8 +95,7 @@ color: white;
 export const AmountSection = styled(motion.section)`
 display: flex;
 justify-content: space-between;
-padding-top: 16px;
-padding-bottom: 16px;
+padding: 36px 0px;
 `;
 
 export const Amount = styled.span`

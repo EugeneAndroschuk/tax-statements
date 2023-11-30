@@ -20,7 +20,8 @@ import { MotionSlider } from "../../components/CompanyListSlider/CompanyListSlid
 import {
   WrapStyled,
   MainPageContainer,
-  MainSection,
+  DeclarationCardSection,
+  DeclarationCardTitle,
   // CompanyContainer,
   DeclarationsContainerWrap,
   DeclarationWrap,
@@ -76,74 +77,76 @@ const MainPage = () => {
   }, [isShowVatDeclarationsList]);
 
   return (
-      <WrapStyled>
-        <MotionSlider />
-        <Container style={{ overflow: "hidden" }}>
-          <AmountSection
-            initial={{ y: "-100%" }}
-            animate={{ y: "0" }}
-            transition={{
-              y: { type: "spring", stiffness: 50, damping: 7 },
-              delay: 0.3,
-            }}
-          >
-            {totalCompanies && (
-              <FMAmountCompanies totalCompanies={totalCompanies} />
-            )}
+    <WrapStyled>
+      <MotionSlider />
+      <Container style={{ overflow: "hidden" }}>
+        <AmountSection
+          initial={{ y: "-100%" }}
+          animate={{ y: "0" }}
+          transition={{
+            y: { type: "spring", stiffness: 50, damping: 7 },
+            delay: 0.3,
+          }}
+        >
+          {totalCompanies && (
+            <FMAmountCompanies totalCompanies={totalCompanies} />
+          )}
 
-            {totalVatDeclarations && (
-              <FMAmountVatDec
-                totalVatDeclarations={totalVatDeclarations}
-                allVatDeclarations={allVatDeclarations}
-              />
-            )}
+          {totalVatDeclarations && (
+            <FMAmountVatDec
+              totalVatDeclarations={totalVatDeclarations}
+              allVatDeclarations={allVatDeclarations}
+            />
+          )}
 
-            <div>
-              <p style={{ color: "white" }}>
-                <Amount>10</Amount>Profit Declarations
-              </p>
-            </div>
-          </AmountSection>
-          <MainSection>
-            {/* <motion.div initial={{y: 200, opacity: 0,} } animate={{ y: 0, opacity: 1 }} transition={{delay: 0.3}}>
+          <div>
+            <p style={{ color: "white" }}>
+              <Amount>10</Amount>Profit Declarations
+            </p>
+          </div>
+        </AmountSection>
+        <DeclarationCardSection>
+          {/* <motion.div initial={{y: 200, opacity: 0,} } animate={{ y: 0, opacity: 1 }} transition={{delay: 0.3}}>
                 <CompanyList />
               </motion.div> */}
 
-            <h1 style={{ color: "white" }}>Tax Statements</h1>
+          <DeclarationCardTitle>
+            Tax Statements
+          </DeclarationCardTitle>
 
-            <DeclarationsContainerWrap>
-              {totalVatDeclarations && (
-                <VatDeclarationCard
-                  allVatDeclarations={allVatDeclarations}
-                  showList={showListVat}
-                />
-              )}
-
-              <ProfitDeclarationCard />
-            </DeclarationsContainerWrap>
-          </MainSection>
-
-          <section ref={itemRef}>
-            {isShowVatDeclarationsList && (
-              <VatDeclarationList allVatDeclarations={allVatDeclarations} />
+          <DeclarationsContainerWrap>
+            {totalVatDeclarations && (
+              <VatDeclarationCard
+                allVatDeclarations={allVatDeclarations}
+                showList={showListVat}
+              />
             )}
-          </section>
 
-          <button
-            style={{ position: "absolute", bottom: "100px", right: "10px" }}
-            type="button"
-            onClick={() => setIsModalAddCompanyOpen(true)}
-          >
-            ADD COMPANY
-          </button>
+            <ProfitDeclarationCard />
+          </DeclarationsContainerWrap>
+        </DeclarationCardSection>
 
-          {isModalAddCompanyOpen && (
-            <ModalPort toggleModal={toggleModalAddCompany}>
-              <ModalAddCompany toggleModal={toggleModalAddCompany} />
-            </ModalPort>
+        <section ref={itemRef}>
+          {isShowVatDeclarationsList && (
+            <VatDeclarationList allVatDeclarations={allVatDeclarations} />
           )}
-        </Container>
-      </WrapStyled>
+        </section>
+
+        <button
+          style={{ position: "absolute", bottom: "100px", right: "10px" }}
+          type="button"
+          onClick={() => setIsModalAddCompanyOpen(true)}
+        >
+          ADD COMPANY
+        </button>
+
+        {isModalAddCompanyOpen && (
+          <ModalPort toggleModal={toggleModalAddCompany}>
+            <ModalAddCompany toggleModal={toggleModalAddCompany} />
+          </ModalPort>
+        )}
+      </Container>
+    </WrapStyled>
   );
 }
 

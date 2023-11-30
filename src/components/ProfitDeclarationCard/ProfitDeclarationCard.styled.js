@@ -2,85 +2,84 @@ import styled from "styled-components";
 import imgProfit from "../../assets/images/profit-bgd.jpg";
 
 export const Wrap = styled.div`
-display: flex;
-gap: 12px;
-align-items: center;
-
-width: calc((1280px / 2) - 30px);
-
-`;
-
-export const DeclarationsContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 300px;
-  height: 200px;
-  border-radius: 5px;
-  background-image: linear-gradient(
-      to right,
-      rgba(47, 48, 58, 0.6),
-      rgba(47, 48, 58, 0.6)
-    ),
-    url("${imgProfit}");
-  background-repeat: repeat;
-  background-size: cover;
 
-  scale: 1;
-  transition: scale 0.3s ease-in;
+  padding: 40px 0px;
 
-  background-image: ${(props) =>
-    props.$active === "true" && `url("${imgProfit}")`};
-  scale: ${(props) => props.$active === "true" && "1.02"};
+  width: calc((1280px / 2) - 50px);
+  border-radius: 26px;
+
+  background-color: white;
 `;
 
 export const DeclarationsContainerText = styled.p`
   position: relative;
   font-size: 36px;
   font-weight: 700;
-  color: white;
-//   color: ${(props) => (props.$active ? "rgb(186, 85, 211)" : "white")};
 
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 8px;
-    top: 40px;
-    left: 0;
-    background-color: rgb(186, 85, 211);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-
-    transform: ${(props) => props.$active && "scaleX(1)"};
-    transform-origin: ${(props) => props.$active && "bottom left"};
-  }
+  margin-bottom: 26px;
 `;
 
 export const InfoWrap = styled.div``;
 
 export const Title = styled.h2`
-color: white;
-margin-bottom: 8px;
+  // color: white;
+  margin-bottom: 26px;
 `;
 
 export const Sum = styled.span`
-font-size: 24px;
-font-weight: 700;
-
+  font-size: 24px;
+  font-weight: 700;
 `;
 
 export const ShowBtn = styled.button`
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 18px;
-  margin-top: 24px;
+  position: relative;
+  z-index: 1;
+  padding: 20px 30px;
+  border-radius: 26px;
+  font-size: 26px;
+  font-weight: 700;
+  color: black;
 
-  &:hover,
-  &:focus {
-    background-color: rgb(186, 85, 211);
-    // font-weight: 700;
+  // text-transform: uppercase;
+
+  margin-top: 36px;
+  margin-left: auto;
+  margin-right: auto;
+
+  border: transparent;
+
+  transition: color 0.5s;
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 26px;
+    margin: auto;
+    width: 100%;
+    height: 1px;
+    content: " ";
+    color: transparent;
+    background-color: rgb(252, 107, 3);
+    visibility: none;
+    opacity: 0;
+    z-index: -1;
+
+    transition: all 0.5s;
+  }
+
+  &:hover {
     color: white;
+    &::before {
+      opacity: 1;
+      visibility: visible;
+      height: 100%;
+    }
   }
 `;
