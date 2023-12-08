@@ -14,17 +14,21 @@ import CompaniesMenuList from "../CompaniesMenuList/CompaniesMenuList";
 import CompaniesMenuActions from "../CompaniesMenuActions/CompaniesMenuActions";
 import { Wrap, CompaniesMenuWrap } from "./CompaniesMenuContainer.styled";
 
-const CompaniesMenuContainer = () => {
+const CompaniesMenuContainer = ({ closeMenu }) => {
   return (
     <Wrap>
       <Container>
         <CompaniesMenuWrap>
           <CompaniesMenuActions />
-          <CompaniesMenuList />
+          <CompaniesMenuList closeMenu={closeMenu} />
         </CompaniesMenuWrap>
       </Container>
     </Wrap>
   );
+};
+
+CompaniesMenuContainer.propTypes = {
+  closeMenu: PropTypes.func,
 };
 
 export default CompaniesMenuContainer;

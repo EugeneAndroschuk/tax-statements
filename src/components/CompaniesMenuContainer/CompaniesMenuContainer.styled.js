@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrap = styled.div`
 width: 100vw;
-height: 261px;
+height: 360px;
 
 padding: 32px 0px;
 

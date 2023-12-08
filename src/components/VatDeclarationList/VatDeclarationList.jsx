@@ -9,6 +9,7 @@ import { getMonthAndYear } from "../../utils/getMonth";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import VatDeclarationItem from "../VatDeclarationItem/VatDeclarationItem";
 import {
+  Title,
   PeriodItem,
   VatDeclarationPeriodWrap,
   VatDeclarationPeriod,
@@ -38,7 +39,7 @@ const VatDeclarationList = ({ allVatDeclarations }) => {
 
   return (
     <div>
-      <h1>Vat Declarations</h1>
+      <Title>Vat Declarations</Title>
 
       <ul>
         {allVatDeclarationsGrouped.map((item, id) => (

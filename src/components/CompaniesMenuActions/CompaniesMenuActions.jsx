@@ -40,10 +40,13 @@ const CompaniesMenuActions = () => {
         <MenuTitle>Company actions</MenuTitle>
         <ActionsList ref={scope}>
           <motion.li initial={{ opacity: 0 }}>
+            <ActionBtn type="button">Add Company</ActionBtn>
+          </motion.li>
+          <motion.li initial={{ opacity: 0 }}>
             <ActionBtn type="button">Edit Company</ActionBtn>
           </motion.li>
           <motion.li initial={{ opacity: 0 }}>
-            <ActionBtn type="button">Add Company</ActionBtn>
+            <ActionBtn type="button">Delete Company</ActionBtn>
           </motion.li>
         </ActionsList>
       </div>

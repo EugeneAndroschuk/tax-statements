@@ -13,7 +13,7 @@ export const MainPageContainer = styled.div`
 `;
 
 export const DeclarationCardSection = styled.section`
-  
+  margin-bottom: 36px;
 `;
 
 export const DeclarationCardTitle = styled.h1`
@@ -103,4 +103,8 @@ export const Amount = styled.span`
   font-weight: 700;
   // color: rgb(186, 85, 211);
   color: rgb(252, 107, 3);
+`;
+
+export const VatDeclarationSection = styled.section`
+margin-bottom: 36px;
 `;

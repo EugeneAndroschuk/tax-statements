@@ -1,4 +1,5 @@
 
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { getUserIsLoggedIn } from "../../redux/auth/authSelectors";
@@ -23,7 +24,15 @@ const Header = () => {
   const [activeCompaniesContainer, setActiveCompaniesContainer] =
     useState(false);
   const isLoggedIn = useSelector(getUserIsLoggedIn);
-  
+
+  const onCloseMenu = (bool) => {
+    // console.log(bool)
+    if (bool) {
+      setActiveCompanyMenu(false);
+      setActiveCompaniesContainer(false);
+    }
+  }
+
   return (
     <HeaderStyled>
       {/* <HeaderFixedContainer> */}
@@ -64,7 +73,7 @@ const Header = () => {
             onMouseMove={() => setActiveCompaniesContainer(true)}
             onMouseOut={() => setActiveCompaniesContainer(false)}
           >
-            <CompaniesMenuContainer />
+            <CompaniesMenuContainer closeMenu={onCloseMenu} />
           </CompaniesContainer>
         )}
       </AnimatePresence>
@@ -72,5 +81,9 @@ const Header = () => {
     </HeaderStyled>
   );
 };
+
+// Header.propTypes = {
+//   closeMenu: PropTypes.func,
+// };
 
 export default Header;

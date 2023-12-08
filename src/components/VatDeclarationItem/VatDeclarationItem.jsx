@@ -5,7 +5,10 @@ import { getTaxLoad } from "../../utils/taxLoad";
 import {
   WrapStyled,
   DeclarationsListHeadStyled,
+  DeclarationsItemHeadStyled,
+  DeclarationsListStyled,
   DeclarationsItemStyled,
+  DeclarationsItemValueStyled,
 } from "./VatDeclarationItem.styled";
 
 
@@ -25,29 +28,37 @@ const VatDeclarationItem = ({ declarations, isClicked, isOpen }) => {
     >
       <div ref={itemRef}>
         <DeclarationsListHeadStyled>
-          <li>
+          <DeclarationsItemHeadStyled>
             <p>Company</p>
-          </li>
-          <li>
-            <p>Sales w/o VAT</p>
-          </li>
-          <li>
-            <p>Vat payable</p>
-          </li>
-          <li>
+          </DeclarationsItemHeadStyled>
+          <DeclarationsItemHeadStyled>
+            <p>Sales w/o VAT, UAH</p>
+          </DeclarationsItemHeadStyled>
+          <DeclarationsItemHeadStyled>
+            <p>Vat payable, UAH</p>
+          </DeclarationsItemHeadStyled>
+          <DeclarationsItemHeadStyled>
             <p>Tax load (%)</p>
-          </li>
+          </DeclarationsItemHeadStyled>
         </DeclarationsListHeadStyled>
-        <ul>
+        <DeclarationsListStyled>
           {declarations.map((declaration) => (
             <DeclarationsItemStyled key={declaration.id}>
-              <p>{declaration.company}</p>
-              <p>{declaration.revenue}</p>
-              <p>{declaration.vatPayable}</p>
-              <p>{getTaxLoad(declaration.revenue, declaration.vatPayable)}</p>
+              <DeclarationsItemValueStyled>
+                {declaration.company}
+              </DeclarationsItemValueStyled>
+              <DeclarationsItemValueStyled>
+                {declaration.revenue}
+              </DeclarationsItemValueStyled>
+              <DeclarationsItemValueStyled>
+                {declaration.vatPayable}
+              </DeclarationsItemValueStyled>
+              <DeclarationsItemValueStyled>
+                {getTaxLoad(declaration.revenue, declaration.vatPayable)}
+              </DeclarationsItemValueStyled>
             </DeclarationsItemStyled>
           ))}
-        </ul>
+        </DeclarationsListStyled>
       </div>
     </WrapStyled>
   );

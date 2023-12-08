@@ -36,7 +36,7 @@ function useMenuAnimation() {
   return scope;
 }
 
-const CompaniesMenuList = () => {
+const CompaniesMenuList = ({ closeMenu }) => {
   const { allCompanies } = useSelector(getAllCompaniesSelector);
   const scope = useMenuAnimation();
 
@@ -47,7 +47,10 @@ const CompaniesMenuList = () => {
         {allCompanies.length > 0 &&
           allCompanies.map((company, id) => (
             <CompaniesListItem key={id} initial={{ opacity: 0 }}>
-              <LinkStyled to={`/company/${company._id}`}>
+              <LinkStyled
+                to={`/company/${company._id}`}
+                onClick={()=>closeMenu(true)}
+              >
                 {company.name}
               </LinkStyled>
             </CompaniesListItem>
@@ -55,6 +58,10 @@ const CompaniesMenuList = () => {
       </CompaniesList>
     </Wrap>
   );
+};
+
+CompaniesMenuList.propTypes = {
+  closeMenu: PropTypes.func,
 };
 
 export default CompaniesMenuList;

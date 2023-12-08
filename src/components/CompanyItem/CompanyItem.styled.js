@@ -19,14 +19,14 @@ export const CompanyName = styled.p`
 font-size: 36px;
 font-weight: 700;
   color: white;
-  margin-bottom: 16px;
+  margin-bottom: 48px;
 `;
 
 export const CompanyCode = styled.p`
   font-size: 26px;
   //   font-weight: 700;
   color: white;
-  margin-bottom: 8px;
+  margin-bottom: 24px;
 `;
 
 export const CompanyAddress = styled.p`

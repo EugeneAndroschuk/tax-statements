@@ -126,7 +126,7 @@ const CompanyData = () => {
           <MonthData>
             <DataText>latest Month data</DataText>
             <DataAmount>
-              {getMonthAndYear(allVatDeclarations[0].period)}
+              {allVatDeclarations.length === 1 && getMonthAndYear(allVatDeclarations[0].period)}
             </DataAmount>
           </MonthData>
         </VatDataWrap>

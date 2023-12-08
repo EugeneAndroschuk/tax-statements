@@ -30,6 +30,7 @@ import {
   ProfitDeclarationsContainer,
   AmountSection,
   Amount,
+  VatDeclarationSection,
 } from "./MainPage.styled";
 
 const MainPage = () => {
@@ -110,9 +111,7 @@ const MainPage = () => {
                 <CompanyList />
               </motion.div> */}
 
-          <DeclarationCardTitle>
-            Tax Statements
-          </DeclarationCardTitle>
+          <DeclarationCardTitle>Tax Statements</DeclarationCardTitle>
 
           <DeclarationsContainerWrap>
             {totalVatDeclarations && (
@@ -126,11 +125,11 @@ const MainPage = () => {
           </DeclarationsContainerWrap>
         </DeclarationCardSection>
 
-        <section ref={itemRef}>
+        <VatDeclarationSection ref={itemRef}>
           {isShowVatDeclarationsList && (
             <VatDeclarationList allVatDeclarations={allVatDeclarations} />
           )}
-        </section>
+        </VatDeclarationSection>
 
         <button
           style={{ position: "absolute", bottom: "100px", right: "10px" }}

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import img from "../../assets/images/comp-bgd/comp-bgd12.jpg";
+import img from "../../assets/images/comp-bgd5.jpg";
 
 export const Wrap = styled.div`
   position: relative;
   width: 100%;
-  height: 260px;
+  height: 360px;
   overflow: hidden;
 
 //   display: flex;
@@ -13,7 +13,7 @@ export const Wrap = styled.div`
 //   align-items: center;
 
   background-image: url("${img}");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-size: cover;
 `;
 
