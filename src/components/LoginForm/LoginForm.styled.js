@@ -12,8 +12,8 @@ align-items: center;
 export const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
-  width: 608px;
-  height: calc(100vh - 60px);
+  width: 300px;
+  // height: calc(100vh - 60px);
   padding: 16px 0px;
   margin-left: auto;
   margin-right: auto;
@@ -24,6 +24,11 @@ export const FormStyled = styled.form`
     rgba(255, 255, 255, 0.9),
     rgba(255, 255, 255, 0.9)
   );
+
+  @media screen and (min-width: 1280px) {
+    width: 608px;
+    height: calc(100vh - 60px);
+  }
 `;
 
 export const FormTitleStyled = styled.h1`
@@ -43,11 +48,16 @@ margin-bottom: 5px;
 
 export const InpuStyled = styled.input`
   outline: none;
-  width: 458px;
-  height: 36px;
+  width: 200px;
+  height: 18px;
   border: 2px solid rgb(252, 214, 20);
   border-radius: 8px;
-  padding: 5px 16px;
+  padding: 2px 5px;
+
+  @media screen and (min-width: 1280px) {
+    width: 458px;
+    padding: 5px 16px;
+  }
 `;
 
 export const ListStyled = styled.ul`

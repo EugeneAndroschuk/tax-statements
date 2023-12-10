@@ -18,64 +18,50 @@ import {
 } from "./VatDeclarationList.styled";
 
 
-const VatDeclarationList = ({ allVatDeclarations }) => {
+const VatDeclarationList = ({ declarations }) => {
   const [clickedId, setClickedId] = useState(null);
   const [isOpenItem, setIsOpenItem] = useState(false);
 
-  let allVatDeclarationsGrouped = [];
-
-  if (allVatDeclarations.length)
-    allVatDeclarationsGrouped = groupDeclarationsByPeriod(allVatDeclarations);
-
-  const onOpenAccordion = (id) => {
-    if (id === clickedId) {
-      setClickedId(null);
-      setIsOpenItem(false);
-    } else {
-      setClickedId(id);
-      setIsOpenItem(true);
-    }
+  const onOpenAccordion = () => {
+    // if (id === clickedId) {
+    //   setClickedId(null);
+    // } else {
+    //   setClickedId(id);
+    // }
+    setIsOpenItem((prev) => !prev);
   };
 
   return (
-    <div>
-      <Title>Vat Declarations</Title>
+    <PeriodItem>
+      <VatDeclarationPeriodWrap onClick={() => onOpenAccordion()}>
+        <VatDeclarationPeriod $clicked={isOpenItem && "true"}>
+          {getMonthAndYear(declarations.period)}
+        </VatDeclarationPeriod>
+        <ExpandMoreIconWrap
+          style={
+            isOpenItem
+              ? { transform: "rotate(-180deg)" }
+              : { transform: "rotate(0)" }
+          }
+          $rotate={isOpenItem ? "true" : "false"}
+        >
+          <ExpandMoreIcon fontSize="large" />
+        </ExpandMoreIconWrap>
+      </VatDeclarationPeriodWrap>
 
-      <ul>
-        {allVatDeclarationsGrouped.map((item, id) => (
-          <PeriodItem key={id}>
-            <VatDeclarationPeriodWrap>
-              <VatDeclarationPeriod onClick={() => onOpenAccordion(id)}>
-                {getMonthAndYear(item.period)}
-              </VatDeclarationPeriod>
-              <ExpandMoreIconWrap
-                style={
-                  id === clickedId
-                    ? { transform: "rotate(-180deg)" }
-                    : { transform: "rotate(0)" }
-                }
-                $rotate={id === clickedId ? "true" : "false"}
-              >
-                <ExpandMoreIcon fontSize="large" />
-              </ExpandMoreIconWrap>
-            </VatDeclarationPeriodWrap>
-
-            <VatDeclarationItemWrap>
-              <VatDeclarationItem
-                declarations={item.declarations}
-                isClicked={id === clickedId ? "true" : "false"}
-                isOpen={isOpenItem}
-              />
-            </VatDeclarationItemWrap>
-          </PeriodItem>
-        ))}
-      </ul>
-    </div>
+      <VatDeclarationItemWrap>
+        <VatDeclarationItem
+          declarations={declarations.declarations}
+          // isClicked={id === clickedId ? "true" : "false"}
+          isOpen={isOpenItem}
+        />
+      </VatDeclarationItemWrap>
+    </PeriodItem>
   );
 };
 
 VatDeclarationList.propTypes = {
-  allVatDeclarations: PropTypes.array.isRequired,
+  declarations: PropTypes.object.isRequired,
 };
 
 export default VatDeclarationList;

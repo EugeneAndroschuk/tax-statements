@@ -51,7 +51,8 @@ const CompanyData = () => {
   const itemRef = useRef(null);
 
   const scrollTo = () => {
-    if (itemRef) setTimeout(
+    if (itemRef && itemRef != null)
+      setTimeout(
         () =>
           itemRef.current.scrollIntoView({
             behavior: "smooth",

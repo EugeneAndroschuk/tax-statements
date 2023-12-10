@@ -17,9 +17,9 @@ const VatDeclarationItem = ({ declarations, isClicked, isOpen }) => {
 
   return (
     <WrapStyled
-      $accordionopen={isClicked === "true" ? "true" : "false"}
+      $accordionopen={isOpen ? "true" : "false"}
       style={
-        isClicked === "true"
+        isOpen
           ? {
               height: itemRef.current.scrollHeight,
             }

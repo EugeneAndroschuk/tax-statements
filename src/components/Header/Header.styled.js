@@ -23,6 +23,12 @@ export const HeaderWrap = styled.div`
   align-items: center;
 `;
 
+export const HeaderWrapDesktop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const LinkStyled = styled(Link)`
   position: relative;
   color: white;

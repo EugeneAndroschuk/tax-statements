@@ -5,6 +5,7 @@ import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { googleAuth } from "../../redux/auth/authThunks";
 import { setToken } from "../../redux/auth/authSlice";
+import { useResize } from "../../utils/useResize";
 import Loader from "../../components/Loader/Loader";
 import Container from "../../styles/Container";
 import { getUserIsRefreshing } from "../../redux/auth/authSelectors";
@@ -19,6 +20,11 @@ import {
 
 const AuthPage = () => {
   const [searchParams] = useSearchParams();
+  const { isScreenPhone, isScreenTablet, isScreenDesktop } = useResize();
+ 
+  console.log(isScreenPhone);
+  console.log(isScreenTablet);
+  console.log(isScreenDesktop);
 
   const params = useMemo(
     () => Object.fromEntries([...searchParams]),

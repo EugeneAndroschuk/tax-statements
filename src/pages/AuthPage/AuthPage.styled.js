@@ -18,11 +18,16 @@ export const AuthPageWrap = styled.div`
 `;
 
 export const OutletWrap = styled.div`
-width: 100%;
-height: calc(100vh - 60px);
+  width: 100%;
+  height: calc(100vh - 60px);
 
-display: flex;
-justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const AuthTextWrap = styled.div`
@@ -35,8 +40,11 @@ gap: 36px;
 `;
 
 export const AuthPageTitle = styled.h1`
-font-size: 72px;
-color: white;
+  color: white;
+  font-size: 48px;
+  @media screen and (min-width: 1280px) {
+    font-size: 72px;
+  }
 `;
 
 export const AuthPageText = styled.h2`

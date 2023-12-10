@@ -3,16 +3,19 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { getUserIsLoggedIn } from "../../redux/auth/authSelectors";
+import { useResize } from "../../utils/useResize";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "../../styles/Container";
 import Logo from "../Logo/Logo";
 import AuthMenu from "../AuthMenu/AuthMenu";
 import UserNav from "../UserNav/UserNav";
 import CompaniesMenuContainer from "../CompaniesMenuContainer/CompaniesMenuContainer";
+import BurgerMenuBtn from "../BurgerMenuBtn/BurgerMenuBtn";
 import {
   HeaderStyled,
   HeaderContainerWrap,
   HeaderWrap,
+  HeaderWrapDesktop,
   LinkStyled,
   CompaniesLink,
   CompaniesContainer,
@@ -24,6 +27,8 @@ const Header = () => {
   const [activeCompaniesContainer, setActiveCompaniesContainer] =
     useState(false);
   const isLoggedIn = useSelector(getUserIsLoggedIn);
+  const { isScreenPhone, isScreenTablet, isScreenDesktop } = useResize();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const onCloseMenu = (bool) => {
     // console.log(bool)
@@ -41,18 +46,28 @@ const Header = () => {
         <Container>
           <HeaderWrap>
             <Logo />
-            <LinkStyled to="/">Main</LinkStyled>
-            <CompaniesLink
-              $hover={
-                activeCompanyMenu || activeCompaniesContainer ? "true" : "false"
-              }
-              onMouseMove={() => setActiveCompanyMenu(true)}
-              onMouseOut={() => setActiveCompanyMenu(false)}
-            >
-              Companies
-            </CompaniesLink>
+            {isScreenDesktop && (
+              <HeaderWrapDesktop>
+                <LinkStyled to="/">Main</LinkStyled>
+                <CompaniesLink
+                  $hover={
+                    activeCompanyMenu || activeCompaniesContainer
+                      ? "true"
+                      : "false"
+                  }
+                  onMouseMove={() => setActiveCompanyMenu(true)}
+                  onMouseOut={() => setActiveCompanyMenu(false)}
+                >
+                  Companies
+                </CompaniesLink>
 
-            {isLoggedIn ? <UserNav /> : <AuthMenu />}
+                {isLoggedIn ? <UserNav /> : <AuthMenu />}
+              </HeaderWrapDesktop>
+            )}
+              <BurgerMenuBtn
+                isMobileMenuOpen={isMobileMenuOpen}
+                toggle={() => setIsMobileMenuOpen((prev) => !prev)}
+              />
           </HeaderWrap>
         </Container>
       </HeaderContainerWrap>

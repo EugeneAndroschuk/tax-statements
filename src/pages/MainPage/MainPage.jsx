@@ -11,7 +11,7 @@ import Container from "../../styles/Container";
 import ModalPort from "../../shared/components/ModalPort/ModalPort";
 import ModalAddCompany from "../../shared/components/ModalAddCompany/ModalAddCompany";
 import CompanyList from "../../components/CompanyList/CompanyList";
-import VatDeclarationList from "../../components/VatDeclarationList/VatDeclarationList";
+import VatDeclarationAccordion from "../../components/VatDeclarationAccordion/VatDeclarationAccordion";
 import FMAmountCompanies from "../../components/FMAmountCompanies/FMAmountCompanies";
 import FMAmountVatDec from "../../components/FMAmountVatDec/FMAmountVatDec";
 import VatDeclarationCard from "../../components/VatTeclarationCard/VatDeclarationCard";
@@ -127,7 +127,7 @@ const MainPage = () => {
 
         <VatDeclarationSection ref={itemRef}>
           {isShowVatDeclarationsList && (
-            <VatDeclarationList allVatDeclarations={allVatDeclarations} />
+            <VatDeclarationAccordion allVatDeclarations={allVatDeclarations} />
           )}
         </VatDeclarationSection>
 
