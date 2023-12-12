@@ -41,13 +41,17 @@ gap: 36px;
 
 export const AuthPageTitle = styled.h1`
   color: white;
-  font-size: 48px;
+  font-size: 36px;
   @media screen and (min-width: 1280px) {
     font-size: 72px;
   }
 `;
 
 export const AuthPageText = styled.h2`
-  font-size: 36px;
+  font-size: 24px;
   color: white;
+
+  @media screen and (max-width: 1279px) {
+    margin-bottom: 16px;
+  }
 `;
