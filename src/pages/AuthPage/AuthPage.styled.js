@@ -31,17 +31,22 @@ export const OutletWrap = styled.div`
 `;
 
 export const AuthTextWrap = styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap: 36px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36px;
+
+  @media screen and (min-width: 1280px) {
+    gap: 36px;
+  }
 `;
 
 export const AuthPageTitle = styled.h1`
   color: white;
   font-size: 36px;
+  margin-bottom: 18px;
   @media screen and (min-width: 1280px) {
     font-size: 72px;
   }
@@ -50,8 +55,5 @@ export const AuthPageTitle = styled.h1`
 export const AuthPageText = styled.h2`
   font-size: 24px;
   color: white;
-
-  @media screen and (max-width: 1279px) {
-    margin-bottom: 16px;
   }
 `;

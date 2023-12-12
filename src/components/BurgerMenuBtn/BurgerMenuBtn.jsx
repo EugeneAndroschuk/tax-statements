@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import {Wrap } from "./BurgerMenuBtn.styled";
 
 const Path = (props) => (
   <motion.path
@@ -11,7 +12,7 @@ const Path = (props) => (
 );
 
 const BurgerMenuBtn = ({ toggle, isMobileMenuOpen }) => (
-  <motion.div
+  <Wrap
     initial={false}
     animate={isMobileMenuOpen ? "open" : "closed"}
     onClick={toggle}
@@ -38,7 +39,7 @@ const BurgerMenuBtn = ({ toggle, isMobileMenuOpen }) => (
         }}
       />
     </svg>
-  </motion.div>
+  </Wrap>
 );
 
 export default BurgerMenuBtn;

@@ -52,6 +52,8 @@ const AuthPage = () => {
             <AuthTextWrap>
               <AuthPageTitle>Tax statements</AuthPageTitle>
               <AuthPageText>VAT Declarations</AuthPageText>
+              <AuthPageText>&</AuthPageText>
+              <AuthPageText>Profit Declarations</AuthPageText>
             </AuthTextWrap>
 
             <Outlet />

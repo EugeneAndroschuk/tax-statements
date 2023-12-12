@@ -18,6 +18,7 @@ export const HeaderContainerWrap = styled.div`
 `;
 
 export const HeaderWrap = styled.div`
+height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;

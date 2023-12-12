@@ -7,8 +7,6 @@ height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-
-
 `;
 
 export const FormStyled = styled.form`
@@ -43,8 +41,6 @@ export const FormTitleStyled = styled.h1`
   text-align: center;
   margin-top: 0;
   margin-bottom: 12px;
-
-  
 `;
 
 export const LabelStyled = styled.label`
@@ -114,17 +110,17 @@ export const GoogleBtn = styled.a`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 36px
+  height: 36px;
   padding: 0;
   border-radius: 8px;
   border: 2px solid rgb(252, 214, 20);
   background-color: white;
-  
+
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 16px;
 
-  font-size: 20px;
+  font-size: 14px;
   line-height: 1.37;
   font-weight: 600;
 
@@ -133,8 +129,9 @@ export const GoogleBtn = styled.a`
     box-shadow: 2px 2px 2px 1px rgb(252, 214, 20);
   }
 
-   @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     width: 458px;
+    font-size: 20px;
   }
 `;
 

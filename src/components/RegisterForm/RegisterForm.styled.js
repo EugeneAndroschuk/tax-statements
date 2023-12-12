@@ -12,18 +12,25 @@ export const FormWrap = styled.div`
 export const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
-  width: 608px;
-  height: calc(100vh - 60px);
-  padding: 16px 0px;
+  width: 100%;
+  // height: calc(100vh - 60px);
+  padding: 16px 16px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 8px;
+  // border-radius: 8px;
 
   background-image: linear-gradient(
     to right,
     rgba(255, 255, 255, 0.9),
     rgba(255, 255, 255, 0.9)
   );
+
+  border-radius: 8px;
+
+  @media screen and (min-width: 1280px) {
+    width: 608px;
+    height: calc(100vh - 60px);
+  }
 `;
 
 export const FormTitleStyled = styled.h1`
@@ -43,11 +50,16 @@ export const LabelStyled = styled.label`
 
 export const InpuStyled = styled.input`
   outline: none;
-  width: 458px;
+  width: 258px;
   height: 36px;
   border: 2px solid rgb(252, 214, 20);
   border-radius: 8px;
-  padding: 5px 16px;
+  padding: 2px 5px;
+
+  @media screen and (min-width: 1280px) {
+    width: 458px;
+    padding: 5px 16px;
+  }
 `;
 
 export const ListStyled = styled.ul`
@@ -64,7 +76,7 @@ export const ItemStyled = styled.li`
 `;
 
 export const SubmitBtnStyled = styled.button`
-  width: 458px;
+  width: 100%;
   height: 36px;
   border: 2px solid rgb(3, 65, 252);
   border-radius: 8px;
@@ -87,30 +99,40 @@ export const SubmitBtnStyled = styled.button`
     background: linear-gradient(90deg, rgb(11, 3, 252), rgb(3, 65, 252));
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
   }
+
+  @media screen and (min-width: 1280px) {
+    width: 458px;
+  }
 `;
 
 export const GoogleBtn = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 458px;
-  height: 36px
+  width: 100%;
+  height: 36px;
+
   padding: 0;
   border-radius: 8px;
   border: 2px solid rgb(252, 214, 20);
   background-color: white;
-  
+
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 16px;
 
-  font-size: 20px;
+  font-size: 14px;
   line-height: 1.37;
   font-weight: 600;
 
   &:hover {
     border: 2px solid rgb(252, 214, 20);
     box-shadow: 2px 2px 2px 1px rgb(252, 214, 20);
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 458px;
+    font-size: 20px;
   }
 `;
 
