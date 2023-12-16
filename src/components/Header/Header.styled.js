@@ -18,6 +18,7 @@ export const HeaderContainerWrap = styled.div`
 `;
 
 export const HeaderWrap = styled.div`
+position: relative;
 height: 60px;
   display: flex;
   justify-content: space-between;
@@ -101,5 +102,5 @@ z-index: 2;
 export const MobileMenuContainer = styled(motion.div)`
   position: absolute;
   top: 60px;
-  z-index: 2;
+  z-index: 1;
 `;

@@ -70,6 +70,24 @@ const Header = () => {
               isMobileMenuOpen={isMobileMenuOpen}
               toggle={() => setIsMobileMenuOpen((prev) => !prev)}
             />
+
+            <AnimatePresence>
+              {" "}
+              {isMobileMenuOpen && (
+                <MobileMenuContainer
+                  initial={{ y: "-100%" }}
+                  animate={{ y: "0" }}
+                  exit={{ y: "-100%" }}
+                  transition={{
+                    y: { type: "auto" },
+                    delay: 0.2,
+                    duration: 5,
+                  }}
+                >
+                  <MobileMenu />
+                </MobileMenuContainer>
+              )}
+            </AnimatePresence>
           </HeaderWrap>
         </Container>
       </HeaderContainerWrap>
@@ -92,21 +110,6 @@ const Header = () => {
           >
             <CompaniesMenuContainer closeMenu={onCloseMenu} />
           </CompaniesContainer>
-        )}
-
-        {isMobileMenuOpen && (
-          <MobileMenuContainer
-            initial={{ x: "-100%" }}
-            animate={{ x: "0" }}
-            exit={{ x: "-100%" }}
-            transition={{
-              x: { type: "auto" },
-              delay: 0.2,
-              duration: 5,
-            }}
-          >
-            <MobileMenu />
-          </MobileMenuContainer>
         )}
       </AnimatePresence>
       {/* </HeaderFixedContainer> */}
