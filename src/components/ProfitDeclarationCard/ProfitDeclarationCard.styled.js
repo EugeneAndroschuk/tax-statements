@@ -8,10 +8,14 @@ export const Wrap = styled.div`
 
   padding: 40px 0px;
 
-  width: calc((1280px / 2) - 50px);
+  width: 100%;
   border-radius: 26px;
 
   background-color: white;
+
+  @media screen and (min-width: 1280px) {
+    width: calc((1280px / 2) - 50px);
+  }
 `;
 
 export const DeclarationsContainerText = styled.p`

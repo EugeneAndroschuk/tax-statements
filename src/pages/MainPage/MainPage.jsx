@@ -22,6 +22,7 @@ import {
   MainPageContainer,
   DeclarationCardSection,
   DeclarationCardTitle,
+  
   // CompanyContainer,
   DeclarationsContainerWrap,
   DeclarationWrap,
@@ -107,22 +108,24 @@ const MainPage = () => {
           </div>
         </AmountSection>
         <DeclarationCardSection>
-          {/* <motion.div initial={{y: 200, opacity: 0,} } animate={{ y: 0, opacity: 1 }} transition={{delay: 0.3}}>
+          
+            {/* <motion.div initial={{y: 200, opacity: 0,} } animate={{ y: 0, opacity: 1 }} transition={{delay: 0.3}}>
                 <CompanyList />
               </motion.div> */}
 
-          <DeclarationCardTitle>Tax Statements</DeclarationCardTitle>
+            <DeclarationCardTitle>Tax Statements</DeclarationCardTitle>
 
-          <DeclarationsContainerWrap>
-            {totalVatDeclarations && (
-              <VatDeclarationCard
-                allVatDeclarations={allVatDeclarations}
-                showList={showListVat}
-              />
-            )}
+            <DeclarationsContainerWrap>
+              {totalVatDeclarations && (
+                <VatDeclarationCard
+                  allVatDeclarations={allVatDeclarations}
+                  showList={showListVat}
+                />
+              )}
 
-            <ProfitDeclarationCard />
-          </DeclarationsContainerWrap>
+              <ProfitDeclarationCard />
+            </DeclarationsContainerWrap>
+          
         </DeclarationCardSection>
 
         <VatDeclarationSection ref={itemRef}>

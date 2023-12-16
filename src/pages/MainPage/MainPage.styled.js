@@ -17,24 +17,30 @@ export const DeclarationCardSection = styled.section`
 `;
 
 export const DeclarationCardTitle = styled.h1`
-font-size: 48px;
-font-weight: 700;
-color: white;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
 
-margin-bottom: 36px;
+  margin-bottom: 36px;
 
-text-align: center;
+  text-align: center;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 48px;
+  }
 `;
 
 // export const CompanyContainer = styled(motion.div)``;
 
 export const DeclarationsContainerWrap = styled.div`
+justify-content: center;
   display: flex;
+  flex-direction: column;
   gap: 30px;
-  
-  
-  // padding-top: 30px;
-  // padding-bottom: 30px;
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+  }
 `;
 
 export const DeclarationWrap = styled.div``;

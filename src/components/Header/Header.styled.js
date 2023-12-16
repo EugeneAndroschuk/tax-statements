@@ -97,3 +97,9 @@ position: absolute;
 top: 60px;
 z-index: 2;
 `;
+
+export const MobileMenuContainer = styled(motion.div)`
+  position: absolute;
+  top: 60px;
+  z-index: 2;
+`;

@@ -10,6 +10,7 @@ import Logo from "../Logo/Logo";
 import AuthMenu from "../AuthMenu/AuthMenu";
 import UserNav from "../UserNav/UserNav";
 import CompaniesMenuContainer from "../CompaniesMenuContainer/CompaniesMenuContainer";
+import MobileMenu from "../MobileMenu/MobileMenu";
 import BurgerMenuBtn from "../BurgerMenuBtn/BurgerMenuBtn";
 import {
   HeaderStyled,
@@ -19,6 +20,7 @@ import {
   LinkStyled,
   CompaniesLink,
   CompaniesContainer,
+  MobileMenuContainer,
 } from "./Header.styled";
 
 
@@ -64,10 +66,10 @@ const Header = () => {
                 {isLoggedIn ? <UserNav /> : <AuthMenu />}
               </HeaderWrapDesktop>
             )}
-              <BurgerMenuBtn
-                isMobileMenuOpen={isMobileMenuOpen}
-                toggle={() => setIsMobileMenuOpen((prev) => !prev)}
-              />
+            <BurgerMenuBtn
+              isMobileMenuOpen={isMobileMenuOpen}
+              toggle={() => setIsMobileMenuOpen((prev) => !prev)}
+            />
           </HeaderWrap>
         </Container>
       </HeaderContainerWrap>
@@ -90,6 +92,21 @@ const Header = () => {
           >
             <CompaniesMenuContainer closeMenu={onCloseMenu} />
           </CompaniesContainer>
+        )}
+
+        {isMobileMenuOpen && (
+          <MobileMenuContainer
+            initial={{ x: "-100%" }}
+            animate={{ x: "0" }}
+            exit={{ x: "-100%" }}
+            transition={{
+              x: { type: "auto" },
+              delay: 0.2,
+              duration: 5,
+            }}
+          >
+            <MobileMenu />
+          </MobileMenuContainer>
         )}
       </AnimatePresence>
       {/* </HeaderFixedContainer> */}

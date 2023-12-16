@@ -24,11 +24,11 @@ const FMAmountVatDec = ({ totalVatDeclarations }) => {
   }, [counttotalVatDeclarations, totalVatDeclarations]);
 
   return (
-    <Wrap>
+    <div>
       <Text>
         <Amount>{roundedtotalVatDeclarations}</Amount>Vat Declarations
       </Text>
-    </Wrap>
+    </div>
   );
 };
 
