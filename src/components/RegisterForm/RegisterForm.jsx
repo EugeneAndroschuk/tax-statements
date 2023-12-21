@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
 import { userRegister } from "../../redux/auth/authThunks";
+import { useResize } from "../../utils/useResize";
 import {
   FormWrap,
   FormStyled,
@@ -21,7 +22,8 @@ import {
 } from "./RegisterForm.styled";
 
 const RegisterForm = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { isScreenPhone, isScreenTablet, isScreenDesktop } = useResize();
   const {
     register,
     handleSubmit,
@@ -30,6 +32,8 @@ const RegisterForm = () => {
   } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
+
+  
     
     const onSubmitForm = (data) => {
         const { name, email, password } = data;
@@ -47,7 +51,7 @@ const RegisterForm = () => {
     >
       <FormWrap>
         <FormStyled onSubmit={handleSubmit((data) => onSubmitForm(data))}>
-          <FormTitleStyled>Registration</FormTitleStyled>
+          {!isScreenPhone && <FormTitleStyled>Registration</FormTitleStyled>}
           <ListStyled>
             <ItemStyled>
               <LabelStyled htmlFor="name">Name</LabelStyled>

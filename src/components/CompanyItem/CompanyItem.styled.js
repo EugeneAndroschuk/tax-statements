@@ -16,21 +16,33 @@ align-items: center;
 `;
 
 export const CompanyName = styled.p`
-font-size: 36px;
-font-weight: 700;
+  font-size: 18px;
+  font-weight: 700;
   color: white;
   margin-bottom: 48px;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 36px;
+  }
 `;
 
 export const CompanyCode = styled.p`
-  font-size: 26px;
+  font-size: 14px;
   //   font-weight: 700;
   color: white;
   margin-bottom: 24px;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 26px;
+  }
 `;
 
 export const CompanyAddress = styled.p`
-  font-size: 26px;
+  font-size: 14px;
   font-weight: 700;
   color: white;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 26px;
+  }
 `;

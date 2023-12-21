@@ -21,10 +21,6 @@ import {
 const AuthPage = () => {
   const [searchParams] = useSearchParams();
   const { isScreenPhone, isScreenTablet, isScreenDesktop } = useResize();
- 
-  console.log(isScreenPhone);
-  console.log(isScreenTablet);
-  console.log(isScreenDesktop);
 
   const params = useMemo(
     () => Object.fromEntries([...searchParams]),

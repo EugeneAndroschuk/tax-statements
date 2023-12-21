@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { userLogIn } from "../../redux/auth/authThunks";
+import { useResize } from "../../utils/useResize";
 import {
   FormWrap,
   FormStyled,
@@ -31,6 +32,8 @@ const LoginForm = () => {
   const password = useRef({});
   password.current = watch("password", "");
 
+  const { isScreenPhone, isScreenTablet, isScreenDesktop } = useResize();
+
   const onSubmitForm = (data) => {
     const { email, password } = data;
     dispatch(userLogIn({ email, password }));
@@ -47,7 +50,8 @@ const LoginForm = () => {
     >
       <FormWrap>
         <FormStyled onSubmit={handleSubmit((data) => onSubmitForm(data))}>
-          <FormTitleStyled>Login</FormTitleStyled>
+          {!isScreenPhone && <FormTitleStyled>Login</FormTitleStyled>}
+
           <ListStyled>
             <ItemStyled>
               <LabelStyled htmlFor="email">Email</LabelStyled>
