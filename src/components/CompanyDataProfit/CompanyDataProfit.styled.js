@@ -15,7 +15,7 @@ export const Wrap = styled.div`
   @media screen and (min-width: 1280px) {
     width: 400px;
     height: 400px;
-    padding: 128px 16px 0px 16px;
+    padding: 0px 16px 0px 16px;
   }
 `;
 
@@ -29,7 +29,7 @@ export const Title = styled.h3`
 
   @media screen and (min-width: 1280px) {
     font-size: 56px;
-    margin-top: 48px;
+    margin-bottom: 48px;
   }
 `;
 
