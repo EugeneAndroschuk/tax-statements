@@ -14,6 +14,7 @@ export const GoToTopBtn = styled.button`
   width: 65px;
   height: 65px;
   border-radius: 50px;
+  border: transparent;
   background-color: rgb(139, 158, 252);
 
   &:hover,

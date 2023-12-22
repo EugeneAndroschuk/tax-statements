@@ -19,6 +19,7 @@ import Container from "../../styles/Container";
 import CompanyDataVat from "../CompanyDataVat/CompanyDataVat";
 import CompanyDataProfit from "../CompanyDataProfit/CompanyDataProfit";
 import CompanyVatDeclarationList from "../CompanyVatDeclarationList/CompanyVatDeclarationList";
+import { useResize } from "../../utils/useResize";
 import {
   TitleAnimationOverlay,
   ParallelogramOne,
@@ -49,6 +50,7 @@ const CompanyData = () => {
   const [vatOverlayOpen, setVatOverlayOpen] = useState(false);
   const [profitOverlayOpen, setProfitOverlayOpen] = useState(false);
   const itemRef = useRef(null);
+  const { isScreenPhone, isScreenTablet, isScreenDesktop } = useResize();
 
   const scrollTo = () => {
     if (itemRef && itemRef != null)
@@ -76,9 +78,13 @@ const CompanyData = () => {
     <div>
       <TitleSection>
         <TitleAnimationOverlay>
-          <ParallelogramOne></ParallelogramOne>
-          <ParallelogramTwo></ParallelogramTwo>
-          <ParallelogramThree></ParallelogramThree>
+          {isScreenDesktop &&
+            <>
+              <ParallelogramOne></ParallelogramOne>
+              <ParallelogramTwo></ParallelogramTwo>
+              <ParallelogramThree></ParallelogramThree>
+            </>}
+
           <TitleTextWrap>
             {allCompanies.length === 1 && (
               <TitleText>{allCompanies[0].name}</TitleText>
@@ -127,7 +133,8 @@ const CompanyData = () => {
           <MonthData>
             <DataText>latest Month data</DataText>
             <DataAmount>
-              {allVatDeclarations.length > 1 && getMonthAndYear(allVatDeclarations[0].period)}
+              {allVatDeclarations.length > 1 &&
+                getMonthAndYear(allVatDeclarations[0].period)}
             </DataAmount>
           </MonthData>
         </VatDataWrap>

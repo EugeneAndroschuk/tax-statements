@@ -2,6 +2,18 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+export const TitleSection = styled.section`
+  width: 100%;
+
+  background-color: black;
+  padding: 32px 0px;
+
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
 export const TitleAnimationOverlay = styled.div`
   position: relative;
   overflow: hidden;
@@ -62,16 +74,7 @@ export const ParallelogramThree = styled.div`
   animation: moveBar 20s linear infinite;
 `;
 
-export const TitleSection = styled.section`
-  width: 100%;
 
-  display: flex;
-  justify-content: center;
-  // align-items: center;
-
-  background-color: black;
-  padding: 32px 0px;
-`;
 
 export const TitleTextWrap = styled.div`
   position: relative;
@@ -88,32 +91,50 @@ export const TitleTextWrap = styled.div`
 `;
 
 export const TitleText = styled.h1`
-max-width: 600px;
-font-size: 56px;
-font-weight: 700;
-color: white;
+  max-width: 600px;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 56px;
+  }
 `;
 
 export const TitleImageWrap = styled.div`
-  width: calc(100% / 2);
+  width: 290px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 1280px) {
+    width: calc(100% / 2);
+  }
 `;
 
 export const TitleImage = styled.img`
-  width: 500px;
+  width: 290px;
   border-radius: 26px;
+
+  @media screen and (min-width: 1280px) {
+    width: 500px;
+  }
 `;
 
 export const LatestDataSection = styled.section`
   width: 100%;
   height: 650px;
   display: flex;
-  gap: 200px;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   background-color: black;
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+    gap: 200px;
+  }
 `;
 
 export const VatDataWrap = styled.div`
@@ -126,11 +147,12 @@ export const ProfitDataWrap = styled.div`
 
 export const MonthData = styled.div`
   position: absolute;
-  top: -100px;
-  left: 200px;
+  top: -50px;
+  left: 100px;
 
-  width: 300px;
-  height: 200px;
+  width: 150px;
+  height: 100px;
+
   border: 3px solid rgba(255, 255, 255, 0.5);
   border-radius: 16px;
   display: flex;
@@ -140,27 +162,42 @@ export const MonthData = styled.div`
   align-items: center;
   // background-color: rgba(255, 255, 255, 0.1);
   background-color: rgba(32, 32, 32);
+
+  @media screen and (min-width: 1280px) {
+    width: 300px;
+    height: 200px;
+    top: -100px;
+    left: 200px;
+  }
 `;
 
 export const DataText = styled.p`
-  font-size: 24px;
-font-weight: 400;
+  font-size: 14px;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
+
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
 `;
 
 export const DataAmount = styled.p`
-  font-size: 36px;
+  font-size: 18px;
   font-weight: 700;
   color: white;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 36px;
+  }
 `;
 
 export const QuarterData = styled.div`
   position: absolute;
-  bottom: -100px;
-  right: 200px;
+  bottom: -50px;
+  right: 100px;
 
-  width: 300px;
-  height: 200px;
+  width: 150px;
+  height: 100px;
   border: 3px solid rgba(255, 255, 255, 0.5);
   border-radius: 16px;
   display: flex;
@@ -169,6 +206,13 @@ export const QuarterData = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(32, 32, 32);
+
+  @media screen and (min-width: 1280px) {
+    width: 300px;
+    height: 200px;
+    bottom: -100px;
+    right: 200px;
+  }
 `;
 
 export const VatOverlay = styled(motion.div)`

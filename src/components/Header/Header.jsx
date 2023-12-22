@@ -64,10 +64,12 @@ const Header = () => {
                 {isLoggedIn ? <UserNav /> : <AuthMenu />}
               </HeaderWrapDesktop>
             )}
-            <BurgerMenuBtn
-              isMobileMenuOpen={isMobileMenuOpen}
-              toggle={() => setIsMobileMenuOpen((prev) => !prev)}
-            />
+            {!isScreenDesktop && (
+              <BurgerMenuBtn
+                isMobileMenuOpen={isMobileMenuOpen}
+                toggle={() => setIsMobileMenuOpen((prev) => !prev)}
+              />
+            )}
           </HeaderWrap>
         </Container>
       </HeaderContainerWrap>
@@ -103,9 +105,7 @@ const Header = () => {
               duration: 5,
             }}
           >
-            <MobileMenu
-              toggle={() => setIsMobileMenuOpen((prev) => !prev)}
-            />
+            <MobileMenu toggle={() => setIsMobileMenuOpen((prev) => !prev)} />
           </MobileMenuContainer>
         )}
       </AnimatePresence>
