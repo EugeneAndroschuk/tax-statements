@@ -6,11 +6,15 @@ display: flex;
 `;
 
 export const Value = styled.p`
-// border: 1px solid green;
-font-size: 24px;
-// font-weight: 700;
-padding: 10px 5px;
-width: calc(100% / 4);
+  // border: 1px solid green;
+  font-size: 12px;
+  // font-weight: 700;
+  padding: 10px 5px;
+  width: calc(100% / 4);
+
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
 `;
 
 export const TaxLoadWrap = styled.div`
@@ -23,9 +27,13 @@ export const TaxLoadWrap = styled.div`
 `;
 
 export const TaxLoadValue = styled.p`
-  font-size: 24px;
+  font-size: 12px;
   // font-weight: 700;
   padding: 10px 5px;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
 `;
 
 export const BtnWrap = styled.div`

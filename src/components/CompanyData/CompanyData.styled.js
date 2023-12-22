@@ -5,19 +5,26 @@ import { motion } from "framer-motion";
 export const TitleSection = styled.section`
   width: 100%;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: black;
-  padding: 32px 0px;
+  padding: 8px 0px;
 
   @media screen and (min-width: 1280px) {
-    display: flex;
-    justify-content: center;
+    padding: 32px 0px;
   }
 `;
 
 export const TitleAnimationOverlay = styled.div`
-  position: relative;
+  position: absolute;
   overflow: hidden;
   width: calc(100% / 2);
+
+  @media screen and (min-width: 1280px) {
+    position: static;
+  }
 `;
 
 export const ParallelogramOne = styled.div`
@@ -123,7 +130,7 @@ export const TitleImage = styled.img`
 
 export const LatestDataSection = styled.section`
   width: 100%;
-  height: 650px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -132,6 +139,7 @@ export const LatestDataSection = styled.section`
   background-color: black;
 
   @media screen and (min-width: 1280px) {
+    height: 650px;
     flex-direction: row;
     gap: 200px;
   }
