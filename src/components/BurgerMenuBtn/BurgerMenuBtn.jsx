@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import {Wrap } from "./BurgerMenuBtn.styled";
+import { Wrap, Burger } from "./BurgerMenuBtn.styled";
 
 const Path = (props) => (
   <motion.path
@@ -13,11 +13,12 @@ const Path = (props) => (
 
 const BurgerMenuBtn = ({ toggle, isMobileMenuOpen }) => (
   <Wrap
-    initial={false}
-    animate={isMobileMenuOpen ? "open" : "closed"}
+    // initial={false}
+    // animate={isMobileMenuOpen ? "open" : "closed"}
     onClick={toggle}
   >
-    <svg width="35" height="35" viewBox="0 0 23 23">
+    <Burger $burgerState={isMobileMenuOpen ? "open" : "closed"}></Burger>
+    {/* <svg width="35" height="35" viewBox="0 0 23 23">
       <Path
         variants={{
           closed: { d: "M 2 2.5 L 20 2.5" },
@@ -38,7 +39,7 @@ const BurgerMenuBtn = ({ toggle, isMobileMenuOpen }) => (
           open: { d: "M 3 2.5 L 17 16.346" },
         }}
       />
-    </svg>
+    </svg> */}
   </Wrap>
 );
 
