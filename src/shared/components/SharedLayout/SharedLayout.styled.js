@@ -8,11 +8,11 @@ export const SharedLayoutWrap = styled.div`
 
 export const GoToTopBtn = styled.button`
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 12px;
+  right: 12px;
 
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
   border-radius: 50px;
   border: transparent;
   background-color: rgb(139, 158, 252);
@@ -20,5 +20,12 @@ export const GoToTopBtn = styled.button`
   &:hover,
   &:focus {
     background-color: rgb(139, 201, 252);
+  }
+
+  @media screen and (min-width: 1280px) {
+    bottom: 50px;
+    right: 50px;
+    width: 65px;
+    height: 65px;
   }
 `;
