@@ -78,12 +78,13 @@ const CompanyData = () => {
     <div>
       <TitleSection>
         <TitleAnimationOverlay>
-          {isScreenDesktop &&
+          {isScreenDesktop && (
             <>
               <ParallelogramOne></ParallelogramOne>
               <ParallelogramTwo></ParallelogramTwo>
               <ParallelogramThree></ParallelogramThree>
-            </>}
+            </>
+          )}
 
           <TitleTextWrap>
             {allCompanies.length === 1 && (
@@ -107,28 +108,30 @@ const CompanyData = () => {
           onMouseOut={() => setVatOverlayOpen(false)}
         >
           <CompanyDataVat allVatDeclarations={allVatDeclarations} />
-          <VatOverlayWrap>
-            <AnimatePresence>
-              {vatOverlayOpen && (
-                <VatOverlay
-                  initial={{ y: "100%" }}
-                  animate={{ y: "0" }}
-                  exit={{ y: "100%" }}
-                  transition={{
-                    y: { type: "auto" },
-                    delay: 0.2,
-                  }}
-                >
-                  <ShowDeclarationsBtn
-                    to={`/company/${companyId}/vat`}
-                    onClick={scrollTo}
+          {isScreenDesktop && (
+            <VatOverlayWrap>
+              <AnimatePresence>
+                {vatOverlayOpen && (
+                  <VatOverlay
+                    initial={{ y: "100%" }}
+                    animate={{ y: "0" }}
+                    exit={{ y: "100%" }}
+                    transition={{
+                      y: { type: "auto" },
+                      delay: 0.2,
+                    }}
                   >
-                    Show VAT declarations
-                  </ShowDeclarationsBtn>
-                </VatOverlay>
-              )}
-            </AnimatePresence>
-          </VatOverlayWrap>
+                    <ShowDeclarationsBtn
+                      to={`/company/${companyId}/vat`}
+                      onClick={scrollTo}
+                    >
+                      Show VAT declarations
+                    </ShowDeclarationsBtn>
+                  </VatOverlay>
+                )}
+              </AnimatePresence>
+            </VatOverlayWrap>
+          )}
 
           <MonthData>
             <DataText>latest Month data</DataText>
@@ -144,28 +147,31 @@ const CompanyData = () => {
           onMouseOut={() => setProfitOverlayOpen(false)}
         >
           <CompanyDataProfit allVatDeclarations={allVatDeclarations} />
-          <ProfitOverlayWrap>
-            <AnimatePresence>
-              {profitOverlayOpen && (
-                <VatOverlay
-                  initial={{ y: "-100%" }}
-                  animate={{ y: "0" }}
-                  exit={{ y: "-100%" }}
-                  transition={{
-                    y: { type: "auto" },
-                    delay: 0.2,
-                  }}
-                >
-                  <ShowDeclarationsBtn
-                    to={`/company/${companyId}/profit`}
-                    onClick={scrollTo}
+          {isScreenDesktop && (
+            <ProfitOverlayWrap>
+              <AnimatePresence>
+                {profitOverlayOpen && (
+                  <VatOverlay
+                    initial={{ y: "-100%" }}
+                    animate={{ y: "0" }}
+                    exit={{ y: "-100%" }}
+                    transition={{
+                      y: { type: "auto" },
+                      delay: 0.2,
+                    }}
                   >
-                    Show Profit declarations
-                  </ShowDeclarationsBtn>
-                </VatOverlay>
-              )}
-            </AnimatePresence>
-          </ProfitOverlayWrap>
+                    <ShowDeclarationsBtn
+                      to={`/company/${companyId}/profit`}
+                      onClick={scrollTo}
+                    >
+                      Show Profit declarations
+                    </ShowDeclarationsBtn>
+                  </VatOverlay>
+                )}
+              </AnimatePresence>
+            </ProfitOverlayWrap>
+          )}
+
           <QuarterData>
             <DataText>latest Quarter data</DataText>
             <DataAmount>
