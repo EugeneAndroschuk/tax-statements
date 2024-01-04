@@ -48,18 +48,22 @@ const Header = () => {
             <Logo />
             {isScreenDesktop && (
               <HeaderWrapDesktop>
-                <LinkStyled to="/">Main</LinkStyled>
-                <CompaniesLink
-                  $hover={
-                    activeCompanyMenu || activeCompaniesContainer
-                      ? "true"
-                      : "false"
-                  }
-                  onMouseMove={() => setActiveCompanyMenu(true)}
-                  onMouseOut={() => setActiveCompanyMenu(false)}
-                >
-                  Companies
-                </CompaniesLink>
+                {isLoggedIn && (
+                  <>
+                    <LinkStyled to="/">Main</LinkStyled>
+                    <CompaniesLink
+                      $hover={
+                        activeCompanyMenu || activeCompaniesContainer
+                          ? "true"
+                          : "false"
+                      }
+                      onMouseMove={() => setActiveCompanyMenu(true)}
+                      onMouseOut={() => setActiveCompanyMenu(false)}
+                    >
+                      Companies
+                    </CompaniesLink>
+                  </>
+                )}
 
                 {isLoggedIn ? <UserNav /> : <AuthMenu />}
               </HeaderWrapDesktop>
@@ -96,11 +100,11 @@ const Header = () => {
 
         {isMobileMenuOpen && (
           <MobileMenuContainer
-            initial={{ y: "-100%" }}
-            animate={{ y: "0" }}
-            exit={{ y: "-100%" }}
+            initial={{ x: "-100%" }}
+            animate={{ x: "0" }}
+            exit={{ x: "-100%" }}
             transition={{
-              y: { type: "auto" },
+              x: { type: "auto" },
               delay: 0.2,
               duration: 5,
             }}

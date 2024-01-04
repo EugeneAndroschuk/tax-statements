@@ -42,12 +42,12 @@ export const Burger = styled.span`
 
   &::before {
     transform: ${(props) =>
-      props.$burgerState === "open" && "rotate(45deg) translate(5px, 5px)"};
+      props.$burgerState === "open" && "rotate(-45deg) translate(-3px, 7px)"};
   }
 
   &::after {
     top: 9px;
     transform: ${(props) =>
-      props.$burgerState === "open" && "rotate(-45deg) translate(7px, -8px)"};
+      props.$burgerState === "open" && "rotate(45deg) translate(-5px, -10px)"};
   }
 `;

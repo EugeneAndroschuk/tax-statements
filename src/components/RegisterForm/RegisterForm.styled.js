@@ -52,7 +52,7 @@ export const InpuStyled = styled.input`
   outline: none;
   width: 258px;
   height: 36px;
-  border: 2px solid rgb(252, 214, 20);
+  border: 2px solid rgb(252, 107, 3);
   border-radius: 8px;
   padding: 2px 5px;
 
@@ -78,9 +78,9 @@ export const ItemStyled = styled.li`
 export const SubmitBtnStyled = styled.button`
   width: 100%;
   height: 36px;
-  border: 2px solid rgb(3, 65, 252);
+  border: 2px solid rgb(252, 107, 3);
   border-radius: 8px;
-  background-color: rgb(3, 65, 252);
+  background-color: rgb(252, 107, 3);
   padding: 0px 16px;
   margin-left: auto;
   margin-right: auto;
@@ -114,7 +114,7 @@ export const GoogleBtn = styled.a`
 
   padding: 0;
   border-radius: 8px;
-  border: 2px solid rgb(252, 214, 20);
+  border: 2px solid rgb(252, 107, 3);
   background-color: white;
 
   margin-left: auto;
@@ -126,8 +126,8 @@ export const GoogleBtn = styled.a`
   font-weight: 600;
 
   &:hover {
-    border: 2px solid rgb(252, 214, 20);
-    box-shadow: 2px 2px 2px 1px rgb(252, 214, 20);
+    border: 2px solid rgb(252, 107, 3);
+    box-shadow: 2px 2px 2px 1px rgb(252, 107, 3);
   }
 
   @media screen and (min-width: 1280px) {
