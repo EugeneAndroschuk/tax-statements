@@ -6,7 +6,7 @@ export const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
 
-  padding: 40px 0px;
+  padding: 40px 8px;
 
   width: 100%;
   border-radius: 26px;
@@ -44,11 +44,11 @@ export const ShowBtn = styled.button`
   z-index: 1;
   padding: 20px 30px;
   border-radius: 26px;
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 700;
   color: black;
 
-  // text-transform: uppercase;
+  text-transform: uppercase;
 
   margin-top: 36px;
   margin-left: auto;
@@ -56,35 +56,75 @@ export const ShowBtn = styled.button`
 
   border: transparent;
 
-  transition: color 0.5s;
+  overflow: hidden;
 
-  &::before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    border-radius: 26px;
-    margin: auto;
-    width: 100%;
-    height: 1px;
-    content: " ";
-    color: transparent;
-    background-color: rgb(252, 107, 3);
-    visibility: none;
-    opacity: 0;
-    z-index: -1;
+  @media screen and (max-width: 1279px) {
+    // color: white;
+    // background-color: rgb(252, 107, 3);
+    background-color: black;
 
-    transition: all 0.5s;
+    color: #fff;
+    text-shadow: 0 0 3px #fff, 0 0 4px #fff, 0 0 8px #fff, 0 0 16px #fff,
+      0 0 32px #fff, 0 0 36px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff;
+
+    &::before {
+      content: " ";
+      // display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 26px;
+      // margin: auto;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(252, 107, 3);
+      z-index: 1;
+      mix-blend-mode: color;
+
+      animation: animate 10s linear infinite;
+
+      @keyframes animate {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+    }
   }
 
-  &:hover {
-    color: white;
+  @media screen and (min-width: 1280px) {
+    transition: color 0.5s;
+
     &::before {
-      opacity: 1;
-      visibility: visible;
-      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 26px;
+      margin: auto;
+      width: 100%;
+      height: 1px;
+      content: " ";
+      color: transparent;
+      background-color: rgb(252, 107, 3);
+      visibility: none;
+      opacity: 0;
+      z-index: -1;
+
+      transition: all 0.5s;
+    }
+
+    &:hover {
+      color: white;
+      &::before {
+        opacity: 1;
+        visibility: visible;
+        height: 100%;
+      }
     }
   }
 `;

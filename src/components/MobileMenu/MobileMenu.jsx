@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { getUserIsLoggedIn } from "../../redux/auth/authSelectors";
 import User from "../User/User";
 import CompaniesMenuMobileList from "../CompaniesMenuMobileList/CompaniesMenuMobileList";
+import CompaniesMenuList from "../CompaniesMenuList/CompaniesMenuList";
+import CompaniesMenuActions from "../CompaniesMenuActions/CompaniesMenuActions";
 import { Wrap, LinkStyled } from "./MobileMenu.styled";
 
 const MobileMenu = ({ toggle }) => {
@@ -26,7 +28,12 @@ const MobileMenu = ({ toggle }) => {
         </>
       )}
 
-      {isLoggedIn && <CompaniesMenuMobileList toggle={toggle} />}
+      {isLoggedIn && (
+        <>
+          <CompaniesMenuActions />
+          <CompaniesMenuMobileList toggle={toggle} />
+        </>
+      )}
     </Wrap>
   );
 };
